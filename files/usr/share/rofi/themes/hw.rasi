@@ -2,7 +2,7 @@ configuration{
     /*modi: "run,drun,window";*/
     modi: "drun";
     lines: 5;
-    font: "JetBrainsMono Nerd Font 11";
+    font: "MesloLGL Nerd Font 12";
     show-icons: false;
     icon-theme: "Papirus-Dark";
     terminal: "kitty";
