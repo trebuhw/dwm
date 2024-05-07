@@ -192,8 +192,8 @@ cd ~/.config/suckless/st && make && sudo make clean install
 # Theme set
 gsettings set org.gnome.desktop.interface gtk-theme 'Catppuccin-Mocha-Standard-Blue-Dark'
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice'
-gsettings set org.gnome.desktop.interface font-name 'JetBrainsMono Nerd Font 10'
+gsettings set org.gnome.desktop.interface cursor-theme 'Qogir-white-cursors'
+gsettings set org.gnome.desktop.interface font-name 'MesloLGS Nerd Font 10'
 
 sudo sed -i 's/Y2NCURSES_COLOR_THEME="[^"]*"/Y2NCURSES_COLOR_THEME="rxvt"/' /etc/sysconfig/yast2
 

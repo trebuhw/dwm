@@ -1,4 +1,4 @@
-# dwm-install Archlinux
+# dwm-install (install-scripts) Archlinux
 
 1.**Install Archlinux:**
 
