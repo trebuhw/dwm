@@ -1,0 +1,13 @@
+UUID=cdf291bf-22f4-41f7-a9ed-009ed48d2cb1  /                       btrfs  defaults                      0  0
+UUID=cdf291bf-22f4-41f7-a9ed-009ed48d2cb1  /var                    btrfs  subvol=/@/var                 0  0
+UUID=cdf291bf-22f4-41f7-a9ed-009ed48d2cb1  /usr/local              btrfs  subvol=/@/usr/local           0  0
+UUID=cdf291bf-22f4-41f7-a9ed-009ed48d2cb1  /srv                    btrfs  subvol=/@/srv                 0  0
+UUID=cdf291bf-22f4-41f7-a9ed-009ed48d2cb1  /root                   btrfs  subvol=/@/root                0  0
+UUID=cdf291bf-22f4-41f7-a9ed-009ed48d2cb1  /opt                    btrfs  subvol=/@/opt                 0  0
+UUID=cdf291bf-22f4-41f7-a9ed-009ed48d2cb1  /home                   btrfs  subvol=/@/home                0  0
+UUID=cdf291bf-22f4-41f7-a9ed-009ed48d2cb1  /boot/grub2/x86_64-efi  btrfs  subvol=/@/boot/grub2/x86_64-efi  0  0
+UUID=cdf291bf-22f4-41f7-a9ed-009ed48d2cb1  /boot/grub2/i386-pc     btrfs  subvol=/@/boot/grub2/i386-pc  0  0
+UUID=cdf291bf-22f4-41f7-a9ed-009ed48d2cb1  /.snapshots             btrfs  subvol=/@/.snapshots          0  0
+UUID=526B-9B6C                             /boot/efi               vfat   utf8                          0  2
+/dev/disk/by-uuid/5BF70A133ED17415 /run/media/hubert/Archiwum/ auto nosuid,nodev,nofail,x-gvfs-show 0 0
+/dev/disk/by-uuid/8AA02215A02207F1 /run/media/hubert/OS auto nosuid,nodev,nofail,x-gvfs-show 0 0
