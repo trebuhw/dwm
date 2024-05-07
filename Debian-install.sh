@@ -5,7 +5,7 @@ packer="sudo nala install -y"
 
 # Change stable to testing
 sudo mv /etc/apt/sources.list /etc/apt/sources.list.bak
-sudo cp -v ~/dwm-install/files/etc/apt/sources.list /etc/apt/
+sudo cp -v ~/dwm/files/etc/apt/sources.list /etc/apt/
 
 # Add Sublime-Text 
 # key
@@ -138,18 +138,18 @@ curl -sS https://starship.rs/install.sh | sh
 
 # File Coopy
 sudo cp /etc/tlp.conf /etc/tlp.conf.bak
-sudo cp ~/dwm-install/files/etc/tlp.conf /etc
-sudo cp -r ~/dwm-install/files/usr/share/rofi /usr/share
-sudo cp -r ~/dwm-install/files/usr/share/xsessions/dwm.desktop /usr/share/xsessions
-sudo cp -r ~/dwm-install/files/usr/share/fonts/* /usr/share/fonts
-sudo cp -r ~/dwm-install/files/usr/share/icons/* /usr/share/icons
-sudo cp -r ~/dwm-install/files/usr/share/themes/* /usr/share/themes
-#sudo cp ~/dwm-install/files/etc/X11/xorg.conf.d/20-intel.conf /etc/X11/xorg.conf.d
+sudo cp ~/dwm/files/etc/tlp.conf /etc
+sudo cp -r ~/dwm/files/usr/share/rofi /usr/share
+sudo cp -r ~/dwm/files/usr/share/xsessions/dwm.desktop /usr/share/xsessions
+sudo cp -r ~/dwm/files/usr/share/fonts/* /usr/share/fonts
+sudo cp -r ~/dwm/files/usr/share/icons/* /usr/share/icons
+sudo cp -r ~/dwm/files/usr/share/themes/* /usr/share/themes
+#sudo cp ~/dwm/files/etc/X11/xorg.conf.d/20-intel.conf /etc/X11/xorg.conf.d
 
 # Coppy files
-cp ~/dwm-install/files/home/* ~/
-cp -r ~/dwm-install/files/.icons ~/
-cp -r ~/dwm-install/files/.config/* ~/.config
+cp ~/dwm/files/home/* ~/
+cp -r ~/dwm/files/.icons ~/
+cp -r ~/dwm/files/.config/* ~/.config
 sudo ln -s ~/.config/yazi/ /root/.config/
 sudo ln -s ~/.config/ranger/ /root/.config/
 
