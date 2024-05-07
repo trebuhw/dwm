@@ -24,8 +24,6 @@ Choise distro insatll scripts ( Archlinux, Debian, OpenSuse)
 - `Icons` - `Adwaita, Papirus,`
 - `Fonts` - `MesloLGS Nerd Font 10`
 
- -
-
 ### **GRUB:**
 
 Detection of other systems and update of grub
