@@ -1,0 +1,95 @@
+#!/bin/bash
+#set -e
+
+packer="sudo pacman -S --noconfirm --needed"
+
+$packer adobe-source-sans-fonts
+$packer aic94xx-firmware
+$packer alacritty
+$packer arandr
+$packer archiso
+$packer avahi
+$packer awesome-terminal-fonts
+$packer baobab
+$packer cpuid
+$packer curl
+$packer dconf-editor
+$packer downgrade
+$packer dracula-cursors-git
+$packer dracula-gtk-theme
+$packer dracula-icons-git
+$packer duf
+$packer dunst
+$packer font-manager
+$packer galculator
+$packer gimp
+$packer git
+$packer gitahead-bin
+$packer gitfiend
+$packer github-desktop-bin
+$packer gnome-disk-utility
+$packer google-chrome
+$packer gparted
+$packer grub-customizer
+$packer gtop
+$packer gvfs-smb
+$packer hardcode-fixer-git
+$packer hardinfo-gtk3
+$packer hddtemp
+$packer htop
+$packer hw-probe
+$packer libreoffice-fresh
+$packer libreoffice-fresh-pl
+$packer linux-firmware-qlogic
+$packer logrotate
+$packer lolcat
+$packer lollypop
+$packer lshw
+$packer man-db
+$packer man-pages
+$packer meld
+$packer mintstick-git
+$packer mkinitcpio-firmware
+$packer mlocate
+$packer most
+$packer neofetch
+$packer networkmanager-openvpn
+$packer noto-fonts
+$packer nss-mdns
+$packer ntp
+$packer openresolv
+$packer pavucontrol
+$packer pdfarranger
+$packer playerctl
+$packer pv
+$packer python-pylint
+$packer python-pywal
+$packer qbittorrent
+$packer rate-mirrors-bin
+$packer ripgrep
+$packer rsync
+$packer scrot
+$packer simplescreenrecorder
+$packer sparklines-git
+$packer speedtest-cli-git
+$packer spotify
+$packer squashfs-tools
+$packer starship
+$packer sublime-text-4
+$packer system-config-printer
+$packer time
+$packer tree
+$packer ttf-hack
+$packer ttf-inconsolata
+$packer upd72020x-fw
+$packer vlc
+$packer wd719x-firmware
+$packer wget
+$packer wttr
+$packer xcolor
+$packer xorg-xkill
+
+yay update-grub
+
+sudo systemctl enable avahi-daemon.service
+sudo systemctl enable ntpd.service
