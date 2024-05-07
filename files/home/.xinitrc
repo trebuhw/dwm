@@ -11,13 +11,13 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-# Display
-xrandr --output Virtual-1 --mode 1920x1080 &
+# Make sure this is before the 'exec' command or it won't be sourced.
+[ -f /etc/xprofile ] && . /etc/xprofile
+[ -f ~/.xprofile ] && . ~/.xprofile
 
 # Loop
 while true; do
              dwm >/dev/null 2>&1
 done
-
 # DWM
 exec dwm

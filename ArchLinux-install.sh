@@ -162,13 +162,7 @@ sudo cp -r ~/dwm-install/files/usr/share/themes/* /usr/share/themes
 #sudo cp ~/dwm-install/files/etc/X11/xorg.conf.d/20-intel.conf /etc/X11/xorg.conf.d
 
 # Coppy files
-cp ~/dwm-install/files/.vimrc ~/
-cp ~/dwm-install/files/.xinitrc ~/
-cp ~/dwm-install/files/.Xresources ~/
-cp ~/dwm-install/files/.background ~/
-cp ~/dwm-install/files/.bash_history ~/
-cp ~/dwm-install/files/.bashrc ~/
-
+cp ~/dwm-install/files/home/* ~/
 cp -r ~/dwm-install/files/.icons ~/
 cp -r ~/dwm-install/files/.config/* ~/.config
 sudo ln -s ~/.config/yazi/ /root/.config/
