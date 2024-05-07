@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+#! /bin/sh
+
+chosen=$(printf "  Power Off\n  Restart\n  Lock" | rofi -dmenu -i -p " POWER ")
+
+case "$chosen" in
+	"  Power Off") poweroff ;;
+	"  Restart") reboot ;;
+	"  Lock") $HOME/.config/hypr/scripts/offscreen ;;
+	*) exit 1 ;;
+esac
