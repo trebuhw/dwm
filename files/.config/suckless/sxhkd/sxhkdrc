@@ -22,17 +22,21 @@ alt + d
 shift + alt + d
     rofi -show run    
 
+# Github-Desktop
+super + shift + g
+    upzypper.sh
+
+# Zypper update
+super + shift + u
+    upzypper.sh
+
 # DWM chatsheet
 super + shift + a
-    alacritty -e nvim ~/.config/suckless/dwm/cheatsheetHW.md
+    alacritty -e nvim ~/.config/suckless/dwm/cheatsheet.md
 
 # Pavucontrol
 super + v
     pavucontrol
-
-# Bluetoth manager
-super + shift + s
-    slstatus
 
 # Bluetoth manager
 super + shift + b
