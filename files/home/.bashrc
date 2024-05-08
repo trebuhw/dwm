@@ -231,7 +231,7 @@ alias cdss='cd ~/.config/suckless/scripts/ && ll'
 alias cdhs='cd ~/.config/hypr/scripts/ && ll'
 alias brc='nvim ~/bashrc'
 alias ptt='pdftotext -layout'
-alias backup='~/.config/hypr/scripts/rsync-backup.sha'
+alias backup='~/.config/suckless/scripts/rsync-backup.sh'
 alias mpdf='gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile=' # Merge pdf. Podać nazwa po połączeniu potem nazwy złączanych plików.
 
 alias gb='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME' # git --bare
