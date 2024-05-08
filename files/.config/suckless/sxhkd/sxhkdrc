@@ -24,7 +24,7 @@ shift + alt + d
 
 # Github-Desktop
 super + shift + g
-    upzypper.sh
+    github-desktop
 
 # Zypper update
 super + shift + u
