@@ -104,4 +104,4 @@ style = "Regular"
 history = 50000
 
 [window]
-opacity = 1.0
+opacity = 0.9
