@@ -22,7 +22,7 @@ Choise distro insatll scripts ( Archlinux, Debian, OpenSuse)
 - `GTK` - `Adwaita, arc-theme, dracula, Catppucin-Mocha`
 - `Cursors` - `Adwaita, Qogir-white-cursors`
 - `Icons` - `Adwaita, Papirus,`
-- `Fonts` - `MesloLGS Nerd Font 10`
+- `Fonts` - `FiraCode Nerd Font 11`
 
 ### **GRUB:**
 
