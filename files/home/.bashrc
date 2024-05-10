@@ -6,7 +6,7 @@ export PAGER='most'
 export MICRO_TRUECOLOR=1
 
 #Starship config
-export STARSHIP_CONFIG=~/.config/starshiptytus.toml
+export STARSHIP_CONFIG=~/.config/starship-bash.toml
 eval "$(starship init bash)"
 #Ibus settings if you need them
 #type ibus-setup in terminal to change settings and start the daemon
@@ -248,3 +248,4 @@ alias gbp='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME push '
 alias sync='rsync -rlpva --delete'
 alias synchypr='rsync -rlpva --delete ~/.config/hypr/ ~/Dokumenty/GitHub/hypr/' #rsync hypr config to GIT repos
 . "$HOME/.cargo/env"
+eval "$(zoxide init bash)"

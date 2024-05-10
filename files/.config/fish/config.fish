@@ -36,4 +36,6 @@ set -Ux FZF_DEFAULT_OPTS "\
 if [ -f $HOME/.config/fish/alias.fish ]
 source $HOME/.config/fish/alias.fish
 
+zoxide init fish | source
+
 end
