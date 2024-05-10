@@ -142,6 +142,7 @@ $packer xorg-xrandr
 $packer xorg-xsetroot
 $packer yazi
 $packer zathura
+$packer zoxide
 
 yay archlinux-tweak-tool-git
 yay bibata-cursor-theme
@@ -159,14 +160,15 @@ sudo cp -r ~/dwm/files/usr/share/xsessions/dwm.desktop /usr/share/xsessions
 sudo cp -r ~/dwm/files/usr/share/fonts/* /usr/share/fonts
 sudo cp -r ~/dwm/files/usr/share/icons/* /usr/share/icons
 sudo cp -r ~/dwm/files/usr/share/themes/* /usr/share/themes
+sudo cp -r ~/dwm/files/.local/share/* ~/.local/share
 #sudo cp ~/dwm/files/etc/X11/xorg.conf.d/20-intel.conf /etc/X11/xorg.conf.d
 
 # Coppy files
 cp ~/dwm/files/home/* ~/
 cp -r ~/dwm/files/.icons ~/
 cp -r ~/dwm/files/.config/* ~/.config
-sudo ln -s ~/.config/yazi/ /root/.config/
-sudo ln -s ~/.config/ranger/ /root/.config/
+sudo ln -s ~/.config/yazi/ /root/.config
+sudo ln -s ~/.config/ranger/ /root/.config
 
 # Make the file executable
 cd /usr/share/xsessions
