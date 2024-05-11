@@ -169,6 +169,10 @@ cp -r ~/dwm/files/.icons ~/
 cp -r ~/dwm/files/.config/* ~/.config
 sudo ln -s ~/.config/yazi/ /root/.config
 sudo ln -s ~/.config/ranger/ /root/.config
+sudo ln -s ~/.config/gtk-2.0/ /root/.config
+sudo ln -s ~/.config/gtk-3.0/ /root/.config
+sudo ln -s ~/.config/gtk-4.0/ /root/.config
+
 
 # Make the file executable
 cd /usr/share/xsessions

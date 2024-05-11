@@ -3,118 +3,12 @@
 # packer="sudo zypper -n install" # Wersja skrócona polecenia
 packer="sudo zypper --non-interactive install --no-recommends"
 
-$packer alacritty
-$packer bash-completion
-$packer bat
-$packer brightnessctl
-$packer btop
-$packer cpuid
-$packer cups
-$packer curl
-$packer dconf-editor
-$packer duf
-$packer dunst
-$packer fastfetch
-$packer feh
-$packer file-roller
-$packer firefox
-$packer fish
-$packer flameshot
-$packer font-manager
-$packer galculator
-$packer gcc
-$packer gcolor3
-$packer gimp
-$packer git
-$packer gnome-disk-utility
-$packer gparted
-$packer gsettings-desktop-schemas
-$packer gzip
-$packer harfbuzz-devel
-$packer htop
-$packer i3lock
-$packer kitty
-$packer libreoffice
-$packer libreoffice-l10n-pl
-$packer libstdc++6-32bit 
-$packer libX11-devel
-$packer libXft-devel
-$packer libXinerama-devel
-$packer libxcb-res0
-$packer lsd
-$packer lxappearance
-$packer mako
-$packer meld
-$packer mlocate
-$packer neofetch
-$packer neovim
-$packer NetworkManager-applet
-$packer ncurses-devel
-$packer numlockx
-$packer opi
-$packer os-prober
-$packer p7zip
-$packer papirus-icon-theme
-$packer parcellite
-$packer pavucontrol
-$packer pdfarranger
-$packer picom
-$packer polkit
-$packer polkit-gnome
-$packer ranger
-$packer rclone
-$packer rclone
-$packer ripgrep
-$packer rofi
-$packer rsync
-$packer scrot
-$packer sensors
-$packer starship
-$packer sxhkd
-$packer sxiv
-$packer system-config-printer
-$packer tealdeer
-$packer tealdeer-fish-completion
-$packer thunar
-$packer thunar-volman
-$packer time
-$packer tlp
-$packer tree
-$packer ueberzugpp
-$packer unrar
-$packer unzip
-$packer vim
-$packer vlc
-$packer wget
-$packer xclip
-$packer xdg-user-dirs
-$packer xfce4-notifyd
-$packer xinit
-$packer xorg-x11-driver-video
-$packer xorg-x11-essentials
-$packer xorg-x11-fonts
-$packer xorg-x11-fonts-converted
-$packer xorg-x11-fonts-core
-$packer xorg-x11-fonts-legacy
-$packer xorg-x11-libX11-ccache
-$packer xorg-x11-server
-$packer xorg-x11-server-extra
-$packer xorg-x11-server-Xvfb
-$packer xorg-x11-Xvnc
-$packer xorg-x11-Xvnc-module
-$packer xorgproto-devel
-$packer xwininfo
-$packer yazi
-$packer zathura
-$packer zathura-plugin-pdf-poppler
-$packer zoxide 
-
+$packer alacritty bash-completion bat brightnessctl btop cpuid cups curl dconf-editor duf dunst fastfetch feh file-roller firefox fish flameshot font-manager galculator gcc gcolor3 gimp git gnome-disk-utility gparted gsettings-desktop-schemas gzip harfbuzz-devel htop i3lock kitty libreoffice libreoffice-l10n-pl libstdc++6-32bit  libX11-devel libXft-devel libXinerama-devel libxcb-res0 lsd lxappearance mako meld mlocate neofetch neovim NetworkManager-applet ncurses-devel numlockx opi os-prober p7zip papirus-icon-theme parcellite pavucontrol pdfarranger picom polkit polkit-gnome ranger rclone ripgrep rofi rsync scrot sensors starship sxhkd sxiv system-config-printer tealdeer tealdeer-fish-completion thunar thunar-volman time tlp tree ueberzugpp unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd xinit xorg-x11-driver-video xorg-x11-essentials xorg-x11-fonts xorg-x11-fonts-converted xorg-x11-fonts-core xorg-x11-fonts-legacy xorg-x11-libX11-ccache xorg-x11-server xorg-x11-server-extra xorg-x11-server-Xvfb xorg-x11-Xvnc xorg-x11-Xvnc-module xorgproto-devel xwininfo yazi zathura zathura-plugin-pdf-poppler zoxide  
 # Install GitHub Desktop
 sudo rpm --import https://rpm.packages.shiftkey.dev/gpg.key
 sudo sh -c 'echo -e "[shiftkey-packages]\nname=GitHub Desktop\nbaseurl=https://rpm.packages.shiftkey.dev/rpm/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://rpm.packages.shiftkey.dev/gpg.key" > /etc/zypp/repos.d/shiftkey-packages.repo'
 # sudo sh -c 'echo -e "[mwt-packages]\nname=GitHub Desktop\nbaseurl=https://mirror.mwt.me/shiftkey-desktop/rpm\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://mirror.mwt.me/shiftkey-desktop/gpgkey" > /etc/zypp/repos.d/mwt-packages.repo'
-sudo zypper refresh && $packer github-desktop
-
+sudo zypper refresh && $packer github-desktop 
 # OPI APP
 opi google-chrome
 opi trash-cli
@@ -127,17 +21,7 @@ sudo zypper refresh
 #sudo zypper search nvidia
 
 # Install Drives
-#$packer kernel-firmware-nvidia
-#$packer libnvidia-egl-wayland1
-#$$packer nvidia-compute-G06
-#$packer nvidia-compute-G06-32bit
-#$packer nvidia-driver-G06-kmp-default
-#$packer nvidia-gl-G06
-#$packer nvidia-gl-G06-32bit
-#$packer nvidia-video-G06
-#$packer nvidia-video-G06-32bit
-#$packer openSUSE-repos-MicroOS-NVIDIA
-
+# $packer kernel-firmware-nvidia libnvidia-egl-wayland1 nvidia-compute-G06 nvidia-compute-G06-32bit nvidia-driver-G06-kmp-default nvidia-gl-G06 nvidia-gl-G06-32bit nvidia-video-G06 nvidia-video-G06-32bit openSUSE-repos-MicroOS-NVIDIA 
 # File Coopy
 sudo cp /etc/tlp.conf /etc/tlp.conf.bak
 sudo cp ~/dwm/files/etc/tlp.conf /etc
@@ -155,6 +39,9 @@ cp -r ~/dwm/files/.icons ~/
 cp -r ~/dwm/files/.config/* ~/.config
 sudo ln -s ~/.config/yazi/ /root/.config
 sudo ln -s ~/.config/ranger/ /root/.config
+sudo ln -s ~/.config/gtk-2.0/ /root/.config
+sudo ln -s ~/.config/gtk-3.0/ /root/.config
+sudo ln -s ~/.config/gtk-4.0/ /root/.config
 
 # Make the file executable
 cd /usr/share/xsessions
