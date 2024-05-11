@@ -63,7 +63,6 @@ $packer polkit
 $packer polkit-gnome
 $packer ranger
 $packer rclone
-$packer rclone
 $packer ripgrep
 $packer rofi
 $packer rsync
@@ -138,7 +137,7 @@ sudo zypper refresh
 #$packer openSUSE-repos-MicroOS-NVIDIA
 
 # File Coopy
-sudo cp /etc/tlp.conf /etc/tlp.conf.bak
+sudo mv /etc/tlp.conf /etc/tlp.conf.bak
 sudo cp ~/dwm/files/etc/tlp.conf /etc
 sudo cp -r ~/dwm/files/usr/share/rofi /usr/share
 sudo cp -r ~/dwm/files/usr/share/xsessions/dwm.desktop /usr/share/xsessions
