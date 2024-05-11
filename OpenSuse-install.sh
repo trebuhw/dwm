@@ -16,8 +16,8 @@ opi sublime
 
 # Nvidia add repository
 #zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA
-packer openSUSE-repos-Tumbleweed-NVIDIA # Równoznaczne z powyższym
-sudo zypper refresh
+#packer openSUSE-repos-Tumbleweed-NVIDIA # Równoznaczne z powyższym
+#sudo zypper refresh
 #sudo zypper search nvidia
 
 # Install Drives
