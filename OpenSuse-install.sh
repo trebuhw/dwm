@@ -107,12 +107,6 @@ $packer yazi
 $packer zathura
 $packer zathura-plugin-pdf-poppler
 
-# Install GitHub Desktop
-sudo rpm --import https://rpm.packages.shiftkey.dev/gpg.key
-sudo sh -c 'echo -e "[shiftkey-packages]\nname=GitHub Desktop\nbaseurl=https://rpm.packages.shiftkey.dev/rpm/\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://rpm.packages.shiftkey.dev/gpg.key" > /etc/zypp/repos.d/shiftkey-packages.repo'
-# sudo sh -c 'echo -e "[mwt-packages]\nname=GitHub Desktop\nbaseurl=https://mirror.mwt.me/shiftkey-desktop/rpm\nenabled=1\ngpgcheck=1\nrepo_gpgcheck=1\ngpgkey=https://mirror.mwt.me/shiftkey-desktop/gpgkey" > /etc/zypp/repos.d/mwt-packages.repo'
-sudo zypper refresh && $packer github-desktop
-
 # OPI APP
 opi google-chrome
 opi trash-cli
@@ -147,7 +141,7 @@ sudo cp -r ~/dwm/files/usr/share/themes/* /usr/share/themes
 #sudo cp ~/dwm/files/etc/X11/xorg.conf.d/20-intel.conf /etc/X11/xorg.conf.d
 
 # Coppy files
-cp ~/dwm/files/home/* ~/
+cp -r ~/dwm/files/home/* ~/
 cp -r ~/dwm/files/.icons ~/
 cp -r ~/dwm/files/.config/* ~/.config
 sudo ln -s ~/.config/yazi/ /root/.config/

@@ -164,7 +164,7 @@ sudo cp -r ~/dwm/files/.local/share/* ~/.local/share
 #sudo cp ~/dwm/files/etc/X11/xorg.conf.d/20-intel.conf /etc/X11/xorg.conf.d
 
 # Coppy files
-cp ~/dwm/files/home/* ~/
+cp -r ~/dwm/files/home/* ~/
 cp -r ~/dwm/files/.icons ~/
 cp -r ~/dwm/files/.config/* ~/.config
 sudo ln -s ~/.config/yazi/ /root/.config
