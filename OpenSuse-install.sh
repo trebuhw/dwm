@@ -21,6 +21,7 @@ $packer firefox
 $packer fish
 $packer flameshot
 $packer font-manager
+$packer fzf
 $packer galculator
 $packer gcc
 $packer gcolor3
