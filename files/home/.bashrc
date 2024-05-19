@@ -80,6 +80,9 @@ ex ()
   fi
 }
 
+# zoxide bind 
+bind '"\C-f":"zi\n"'
+
 ### ALIASES ###
 
 #list
