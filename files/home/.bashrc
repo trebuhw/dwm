@@ -102,6 +102,7 @@ alias userlist="cut -d: -f1 /etc/passwd | sort"
 alias ws="watch sensors"
 alias ns="nvidia-smi"
 alias btinfo="bluetoothctl info"
+alias br='sudo systemctl restart bluetooth'
 
 #fix obvious typo's
 alias cd..='cd ..'

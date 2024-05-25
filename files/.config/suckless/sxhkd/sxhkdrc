@@ -35,7 +35,7 @@ super + shift + a
     alacritty -e nvim ~/.config/suckless/dwm/cheatsheet.md
 
 # Pavucontrol
-super + v
+super + shift + p
     pavucontrol
 
 # Bluetoth manager

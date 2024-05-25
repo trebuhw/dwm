@@ -30,7 +30,7 @@
   Shift   Alt     d        *show app menu* (`rofi -run`)
   Super   Shift   g        *GitHub* (`github-desktop`)
   Super   Shift   u        *Zypper Update* (`upzypper.sh`)
-  Super           v        *audio control* (`pavucontrol`)
+  Super   Shift   p        *audio control* (`pavucontrol`)
   Super   Shift   b        *bluetoh control* (`bluetoth-manager`)
   Super   Shift   a        *dwm cheatsheet*
   Super   Shift   q        *kill dwm* (`pkill dwm`)

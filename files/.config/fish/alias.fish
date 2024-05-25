@@ -15,6 +15,7 @@ alias ws="watch sensors"
 alias ns="nvidia-smi"
 alias bt='blueman-adapters'
 alias nma='nm-applet'
+alias br='sudo systemctl restart bluetooth'
 alias btinfo="bluetoothctl info"
 alias think="bluetoothctl info | awk '/Name:/ || /Battery Percentage:/' | bat "
 alias logout='pkill -KILL -u hubert'
