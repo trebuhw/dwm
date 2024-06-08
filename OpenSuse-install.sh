@@ -107,6 +107,7 @@ $packer xwininfo
 $packer yazi
 $packer zathura
 $packer zathura-plugin-pdf-poppler
+$packer zoxide
 
 # OPI APP
 opi google-chrome
