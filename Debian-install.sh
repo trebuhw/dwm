@@ -86,6 +86,7 @@ $packer sxiv
 $packer system-config-printer
 $packer thunar
 $packer thunar-volman
+$packer thunderbird
 $packer time
 $packer tldr
 $packer tlp
