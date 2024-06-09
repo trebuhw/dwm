@@ -47,6 +47,7 @@ $packer lxappearance
 $packer mako
 $packer meld
 $packer mlocate
+$packer MozillaThunderbird
 $packer neofetch
 $packer neovim
 $packer NetworkManager-applet
