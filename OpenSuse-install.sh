@@ -114,6 +114,7 @@ $packer zoxide
 opi google-chrome
 opi trash-cli
 opi sublime
+opi joplin-desktop
 
 # Nvidia add repository
 #zypper addrepo --refresh https://download.nvidia.com/opensuse/tumbleweed NVIDIA

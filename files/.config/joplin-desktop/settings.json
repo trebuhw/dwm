@@ -1,0 +1,53 @@
+{
+	"$schema": "https://joplinapp.org/schema/settings.json",
+	"locale": "pl_PL",
+	"api.token": "2b9cbe734995b9b2287682b9daaa64a0deca9c1ffa0ea3d5513b7b0348845ab927c906d2ae785c18f2c4d526b297347b244c7654085d321ba4e46ba7755508c7",
+	"markdown.plugin.softbreaks": false,
+	"markdown.plugin.typographer": false,
+	"spellChecker.languages": [
+		"pl"
+	],
+	"noteVisiblePanes": [
+		"editor",
+		"viewer"
+	],
+	"ui.layout": {
+		"key": "root",
+		"children": [
+			{
+				"key": "sideBar",
+				"width": 200,
+				"visible": true
+			},
+			{
+				"key": "noteList",
+				"width": 297,
+				"visible": true
+			},
+			{
+				"key": "editor",
+				"visible": true
+			}
+		],
+		"visible": true
+	},
+	"sync.target": 3,
+	"theme": 2,
+	"showTrayIcon": true,
+	"editor.codeView": false,
+	"dateFormat": "YYYY/MM/DD",
+	"editor": "/usr/bin/nvim",
+	"startMinimized": true,
+	"notes.sortOrder.field": "title",
+	"notes.sortOrder.reverse": false,
+	"notes.perFieldReverse": {
+		"user_updated_time": true,
+		"user_created_time": true,
+		"title": false,
+		"order": false
+	},
+	"style.editor.fontSize": 15,
+	"style.editor.fontFamily": "FiraCode Nerd Font",
+	"richTextBannerDismissed": true,
+	"windowContentZoomFactor": 100
+}
