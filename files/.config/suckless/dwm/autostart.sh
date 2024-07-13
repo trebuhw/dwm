@@ -14,11 +14,12 @@ sxhkd -c ~/.config/suckless/sxhkd/sxhkdrc &
 run numlockx on &
 xrdb ~/.Xresources &
 run nm-applet &
+run blueman-applet &
 run parcellite -n & # Ctrl+Alt+s run history clipboard
 run ~/.config/suckless/scripts/rclone.sh &
 run /usr/libexec/xfce4/notifyd/xfce4-notifyd & #OpenSuse
 picom -b  --config ~/.config/suckless/dwm/picom.conf &
-run numlockx on &
+run joplin-desktop &
 #run slstatus &
 
 

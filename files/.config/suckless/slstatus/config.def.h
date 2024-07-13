@@ -72,24 +72,12 @@ static const char mic[]         = "[ `amixer sget Capture | tail -n 1 | awk '{pr
 
 static const struct arg args[] = {
         /* function format          argument */
-        { cpu_perc,             "[ CPU %s% ]",    NULL },
-        { run_command,          "[ TEM %s ]",    "sensors | grep 'dell_smm-isa-0000' -A 5 | grep 'temp1:' | awk '{print $2}' | cut -d '+' -f2" },
-        //{ run_command,        "[ TEM %s ]",    "sensors | awk '/^Package/ {print $4}' | sed 's/+//'" },
-        //{ temp,               "[ TEM %s°C ]", "/sys/devices/platform/coretemp.0/hwmon/hwmon5/temp1_input" },
-        { ram_perc,             "[ MEM %s% ]",    NULL },
-        { ram_used,             "[ RAM %s ]",     NULL },
-        { run_command,          "[ BRI%s ]",      "sl-bkl.sh" },
-        //{ battery_state,      "[   (%s) ]  ",   "BAT0" },
-        { run_command,          "[ VOL %s ]",     vol },
-        //{ run_command,        "[  %s ]  ",     mic },
-        //{ keymap,             " %s ",          NULL },
-        { battery_perc,         "[ BAT %s%% ]",   "BAT0" },
-        //{ wifi_perc,          "[ NET %s%% ]",  "wlp0s20f3" },
-        //{ run_command,        "[%s]",           "TZ=Europe/Warsaw date +\"%a %Y/%m/%d - %H:%M\"" }, /* Date time with this format: Day name YYYY-MM-DD 18:00:00 */
-        //{ run_command,        "[ %s ]",         "TZ=Europe/Warsaw date +\"%a, %d %b\"" }, /* Date time with this format: Day name YYYY-MM-DD 18:00:00 */
-        //{ run_command,        "[ %s ]",         "TZ=Europe/Warsaw date +\"%H:%M\"" }, /* Date time with this format: Day name YYYY-MM-DD 18:00:00 */
-        { run_command,          "[ %s ]",         "TZ=Europe/Warsaw date +\"%a, %d/%m/%Y\"" }, /* Date time with this format: Day name YYYY-MM-DD 18:00:00 */
-        //{ run_command,        "[%s]",           "TZ=Europe/Warsaw date +\"%a %F %T\"" }, /* Date time with this format: Day name YYYY-MM-DD 18:00:00 */
-        { datetime,             "[ %s ]",         "%H:%M" }, /* Date time with this format: Day name YYYY-MM-DD 18:00:00 */
-        //{ datetime,           "[%s]",           "%y/%m/%d %a - %H:%M" }, /* Date time with this format: Day name YYYY-MM-DD 18:00:00 */
+        { cpu_perc,             "[ CPU %s% TEM", NULL },
+        { run_command,          " %s ",        "sensors | grep 'dell_smm-isa-00de' -A 5 | grep 'temp1:' | awk '{print $2}' | cut -d '+' -f2" },
+        { ram_used,             "RAM %s ",       NULL },
+        { run_command,          "BRI%s ",     "sl-bkl.sh" },
+        { run_command,          "VOL %s ",    vol },
+        { battery_perc,         "BAT %s%% ]", "BAT0" },
+        { run_command,          "[ %s ",       "TZ=Europe/Warsaw date +\"%a, %d/%m/%Y\"" }, /* Date time with this format: Day name YYYY-MM-DD 18:00:00 */
+        { datetime,             "%s ]",       "%H:%M" }, /* Date time with this format: Day name YYYY-MM-DD 18:00:00 */
 };
