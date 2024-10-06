@@ -59,13 +59,13 @@ $packer libxcb-res0
 $packer libxft-dev
 $packer libxinerama-dev
 $packer lsd
-$packer lxappearance
 $packer make
 $packer meld
 $packer mlocate
 $packer neofetch
 $packer neovim
 $packer numlockx
+$packer nwg-look
 $packer os-prober
 $packer p7zip
 $packer papirus-icon-theme

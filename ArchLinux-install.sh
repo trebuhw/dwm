@@ -60,7 +60,6 @@ $packer logrotate
 $packer lolcat
 $packer lsd
 $packer lshw
-$packer lxappearance
 $packer man-db
 $packer man-pages
 $packer meld
@@ -75,6 +74,7 @@ $packer noto-fonts
 $packer nss-mdns
 $packer ntp
 $packer numlockx
+$packer nwg-look
 $packer openresolv
 $packer os-prober
 $packer p7zip
