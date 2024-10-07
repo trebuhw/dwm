@@ -37,8 +37,8 @@ alias trm='trash-rm' #usówa pojedyńcze pliki z kosza
 alias mkdir='mkdir -vp'
 alias pdw='pwd'
 alias zyp='sudo zypper'
-alias up='sudo zypper refresh && sudo zypper update && sudo zypper dist-upgrade'
-alias dup='sudo zypper refresh && sudo zypper dist-upgrade'
+alias up='sudo zypper refresh && sudo zypper update --no-recommends && sudo zypper dist-upgrade --no-recommends'
+alias dup='sudo zypper refresh && sudo zypper dist-upgrade --no-recommendsa'
 alias zin='sudo zypper install --no-recommends'
 alias zrm='sudo zypper remove -u'
 alias zse='sudo zypper search'
@@ -51,7 +51,7 @@ alias zrr='sudo zypper rr' #removerepo, rr - Usuwanie wybranego repozytorium
 alias zcd='sudo zypper packages --unneeded' # Usówanie osieroconych pakietów
 alias zcl='sudo zypper clean --all' # Clean repo, key repo, cache
 
-alias tldr='tldr -t ocean'
+#alias tldr='tldr -t ocean'
 # alias tldr='tldr --color always' # Install OpenSuse tealdeer run tldr -h
 
 alias find='find -name'
@@ -118,8 +118,8 @@ alias e="exit"
 alias po="systemctl poweroff"
 alias rb="systemctl reboot"
 alias rh="hyprctl dispatch exit"
-#alias r='ranger'
-alias r='~/.config/dwm/scripts/ranger.sh'
+alias r='ranger'
+# alias r='~/.config/dwm/scripts/ranger.sh'
 #alias y='$HOME/Pobrane/git/yazi/yazi/target/release/yazi'
 alias y='yazi'
 alias rs='ranger --confdir=$HOME/.config/ranger.st/'
