@@ -9,6 +9,10 @@ super + x
 alt + Return
     st
 
+# xfce4 terminal drop down 
+F12
+    xfce4-terminal --drop-down
+
 # nv
 super + n
     st -e nvim    
@@ -104,4 +108,8 @@ XF86MonBrightnessUp
 # Brightness down
 XF86MonBrightnessDown
     brightnessctl s 10%-
+
+# Reset VOL & Brightness
+super + shift + m
+    /home/hubert/.config/suckless/scripts/reset_vol_bri.sh
 

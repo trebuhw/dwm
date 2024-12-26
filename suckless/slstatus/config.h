@@ -14,16 +14,17 @@ static const char unknown_str[] = "n/a";
  *
  * battery_perc        battery percentage              battery name (BAT0)
  *                                                     NULL on OpenBSD/FreeBSD
- * battery_state       battery charging state          battery name (BAT0)
- *                                                     NULL on OpenBSD/FreeBSD
  * battery_remaining   battery remaining HH:MM         battery name (BAT0)
  *                                                     NULL on OpenBSD/FreeBSD
- * cpu_perc            cpu usage in percent            NULL
+ * battery_state       battery charging state          battery name (BAT0)
+ *                                                     NULL on OpenBSD/FreeBSD
+ * cat                 read arbitrary file             path
  * cpu_freq            cpu frequency in MHz            NULL
+ * cpu_perc            cpu usage in percent            NULL
  * datetime            date and time                   format string (%F %T)
  * disk_free           free disk space in GB           mountpoint path (/)
  * disk_perc           disk usage in percent           mountpoint path (/)
- * disk_total          total disk space in GB          mountpoint path (/")
+ * disk_total          total disk space in GB          mountpoint path (/)
  * disk_used           used disk space in GB           mountpoint path (/)
  * entropy             available entropy               NULL
  * gid                 GID of current user             NULL
@@ -58,8 +59,9 @@ static const char unknown_str[] = "n/a";
  * uptime              system uptime                   NULL
  * username            username of current user        NULL
  * vol_perc            OSS/ALSA volume in percent      mixer file (/dev/mixer)
- * wifi_perc           WiFi signal in percent          interface name (wlan0)
+ *                                                     NULL on OpenBSD/FreeBSD
  * wifi_essid          WiFi ESSID                      interface name (wlan0)
+ * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
 
 static const char vol[]         = "[ `amixer sget Master | tail -n 1 | awk '{print $6;}'` = \"[on]\" ] \
@@ -74,7 +76,7 @@ static const struct arg args[] = {
         /* function format          argument */
         { cpu_perc,             "[ CPU %s%% ", NULL },
 //        { run_command,          "TEM %s ",        "sensors | grep 'dell_smm-isa-00de' -A 5 | grep 'temp1:' | awk '{print $2}' | cut -d '+' -f2 | cut -d '.' -f1" },
-        { run_command,          "TEM %s ",        "sensors | grep 'dell_smm-isa-00de' -A 5 | grep 'temp1:' | awk '{print $2}' | cut -d '+' -f2" },
+        { run_command,          "TEM %s ",        "sensors | grep 'dell_smm-isa-0000' -A 5 | grep 'temp1:' | awk '{print $2}' | cut -d '+' -f2" },
         { ram_used,             "RAM %s ",       NULL },
         { run_command,          "BRI%s ",     "sl-bkl.sh" },
         { run_command,          "VOL %s%% ",    "volume" },

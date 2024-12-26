@@ -8,19 +8,19 @@ function run {
 }
 
 run "xrandr --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal"
-feh --bg-fill $HOME/.background &
-run /usr/libexec/polkit-gnome-authentication-agent-1 & # OpenSuse authentication
-sxhkd -c ~/.config/suckless/sxhkd/sxhkdrc &
+run nitrogen --restore &
+run picom -b  --config ~/.config/suckless/dwm/picom.conf &
+run dunst &
+run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & # OpenSuse authentication
+run sxhkd -c ~/.config/suckless/sxhkd/sxhkdrc &
 run numlockx on &
-xrdb ~/.Xresources &
+run xrdb ~/.Xresources &
 run nm-applet &
 run blueman-applet &
 run parcellite -n & # Ctrl+Alt+s run history clipboard
-run ~/.config/suckless/scripts/rclone.sh &
-run /usr/libexec/xfce4/notifyd/xfce4-notifyd & #OpenSuse
-picom -b  --config ~/.config/suckless/dwm/picom.conf &
-#run joplin-desktop &
-#run slstatus &
+# run feh --bg-fill $HOME/.background &
+# run ~/.config/suckless/scripts/rclone.sh &
+# run /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
 
 # Display

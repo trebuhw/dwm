@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sxhkd -c ~/.config/dwm/sxhkd/sxhkdrc &
+sxhkd -c ~/.config/suckless/sxhkd/sxhkdrc &
 
 notify-send "sxhkd restarted"
 
