@@ -2,7 +2,7 @@
   Super = Windows Key
 # DWM config operations
   Super          Return   *terminal* (`kitty`)
-  Super          w        *web browser* (`google-chrome-stable`)
+  Super          w        *web browser* (`floorp`)
   Super   Shift  Return   *file manager* (`thunar`)
   Super          q        *quit* (kill focused window)
   Super          d        *show app menu* (`dmenu`)
@@ -11,8 +11,15 @@
   Super   Shift  r        *reload/restart dwm* (`reload/xkill`)
   Super          Escape   *kill application*
 # windows control
-  Super   Space              *layout change* 
+  Super          t           *Tiling layout - default* 
+  Super          f           *Floating layout* 
+  Super          m           *Monocle layout - tylko jedno okno widoczne* 
+  Super   Shift  f           *Fullscreen layout* 
+  Super   Space              *Change actualy to default layout* 
+  Super   Shift  Space       *Change floating to default layout* 
   Super   Shift  left/right  *windows size change*
+  Super   Shift  d           *Horizontal layout* 
+  Super   Shift  i           *Vertical layout* 
   Super          left/right  *focus stack*
   super          -/+         *gaps size change*
 # container layout
@@ -29,7 +36,7 @@
           Alt     d        *show app menu* (`rofi -drun`)
   Shift   Alt     d        *show app menu* (`rofi -run`)
   Super   Shift   g        *GitHub* (`github-desktop`)
-  Super   Shift   u        *Zypper Update* (`upzypper.sh`)
+  Super   Shift   u        *Paru Update* (`paru-up.sh`)
   Super   Shift   p        *audio control* (`pavucontrol`)
   Super   Shift   b        *bluetoh control* (`bluetoth-manager`)
   Super   Shift   a        *dwm cheatsheet*
@@ -38,11 +45,11 @@
   Ctrl    Alt     s        *Show clipboard history* (`parcellite`)
 
 # TERMINAL:
-  CTRL    A  *Początek lini*
-  CTRL    E  *Koniec lini*
-  ALT     F  *Jedno słowo do przodu*
-  ALT     B  *Jedno słowo do tyłu*
-  CTRL    U  *Usówanie od kursora do początku lini*
-  CTRL    K  *Usówanie od kursora do końca lini*
-  CTR     R  *Wiersz poleceń na dole w terminalu*
+  CTRL    a  *Początek lini*
+  CTRL    e  *Koniec lini*
+  ALT     f  *Jedno słowo do przodu*
+  ALT     b  *Jedno słowo do tyłu*
+  CTRL    u  *Usówanie od kursora do początku lini*
+  CTRL    k  *Usówanie od kursora do końca lini*
+  CTRL    r  *Wyszukiwanie ostatnich poleceń*
           ;  *Rozdzielić wiele poleceń w jednej lini*

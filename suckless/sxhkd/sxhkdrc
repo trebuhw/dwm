@@ -3,15 +3,11 @@
 #################################################################
 # kitty
 super + x
-    kitty
+    wezterm
 
 # st
 alt + Return
     st
-
-# xfce4 terminal drop down 
-F12
-    xfce4-terminal --drop-down
 
 # nv
 super + n
@@ -27,19 +23,23 @@ alt + d
 
 # Rofi
 shift + alt + d
-    rofi -show run    
+    rofi -show run 
 
 # Github-Desktop
 super + shift + g
     github-desktop
 
-# Zypper update
+# Nitrogen - Wallpaper change
+super + shift + w
+    nitrogen
+
+# Paru update
 super + shift + u
-    upzypper.sh
+    paru-up.sh
 
 # DWM chatsheet
 super + shift + a
-    alacritty -e nvim ~/.config/suckless/dwm/cheatsheet.md
+    alacritty --config-file ~/.dotfiles/alacritty/.config/alacritty-X11/alacritty.toml -e nvim ~/.config/suckless/dwm/cheatsheet.md
 
 # Pavucontrol
 super + shift + p
