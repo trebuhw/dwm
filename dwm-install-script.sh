@@ -74,6 +74,10 @@ log "Tworzenie kopii zapasowych plików konfiguracyjnych..."
 [ -f ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
 [ -f ~/.bash_logout ] && mv ~/.bash_logout ~/.bash_logout.bak
 [ -f ~/.bash_profile ] && mv ~/.bash_profile ~/.bash_profile.bak
+[ -f ~/.gtkrc-2.0 ] && mv ~/.gtk-2.0 ~/.gtkrc-2.0.bak
+[ -f ~/.config/gtk-2.0 ] && mv ~/.config/gtk-2.0 ~/gtk-2.0.bak
+[ -f ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/gtk-3.0.bak
+[ -f ~/.config/gtk-4.0 ] && mv ~/.config/gtk-4.0 ~/gtk-4.0.bak
 
 # Stow
 log "Tworzenie symlinków za pomocą stow..."
