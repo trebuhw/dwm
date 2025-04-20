@@ -78,7 +78,7 @@ log "Tworzenie kopii zapasowych plików konfiguracyjnych..."
 # Stow
 log "Tworzenie symlinków za pomocą stow..."
 cd ~/.dotfiles || { error "Nie można przejść do katalogu ~/.dotfiles"; exit 1; }
-stow bash/ fastfetch/ nsxiv/ sxiv/ xprofile/ suckless/ dunst/ fish/ kitty/ fish/ starship/ themes/ icons/ background/
+stow bash/ Xresources/ nvim/ vim/ fastfetch/ nsxiv/ sxiv/ xprofile/ suckless/ dunst/ fish/ kitty/ fish/ starship/ themes/ icons/ background/
 check_success "Błąd podczas wykonywania stow"
 
 # Kompilacja i instalacja DWM
