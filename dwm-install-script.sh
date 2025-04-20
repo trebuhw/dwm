@@ -192,14 +192,14 @@ check_success "Błąd podczas kompilacji DWM"
 log "Kompilacja i instalacja DMENU..."
 cd ~/.config/suckless/dmenu || { error "Nie można przejść do katalogu DMENU"; exit 1; }
 [ -f config.h ] && rm config.h
-sudo make && sudo make clean install
+sudo make && sudo make clean install && rm config.h
 check_success "Błąd podczas kompilacji DMENU"
 
 # Kompilacja i instalacja slstatus
 log "Kompilacja i instalacja slstatus..."
 cd ~/.config/suckless/slstatus || { error "Nie można przejść do katalogu slstatus"; exit 1; }
 [ -f config.h ] && rm config.h
-sudo make && sudo make clean install
+sudo make && sudo make clean install && rm config.h
 check_success "Błąd podczas kompilacji slstatus"
 
 # Kompilacja i instalacja st
