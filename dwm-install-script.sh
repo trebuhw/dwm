@@ -45,7 +45,7 @@ elif [ "$DISTRO" = "ubuntu" ]; then
     sudo apt update
     check_success "Nie udało się zaktualizować listy pakietów"
     
-    sudo apt install -y build-essential libx11-dev libxinerama-dev libxft-dev libxcb1-dev libxcb-keysyms1-dev libxcb-icccm4-dev libx11-xcb-dev libxcb-util0-dev libxcb-randr0-dev suckless-tools libfreetype6-dev
+    sudo apt install -y libharfbuzz-dev libxft-dev libpango1.0-dev build-essential libx11-dev libxinerama-dev libxft-dev libxcb1-dev libxcb-keysyms1-dev libxcb-icccm4-dev libx11-xcb-dev libxcb-util0-dev libxcb-randr0-dev suckless-tools libfreetype6-dev
     check_success "Nie udało się zainstalować podstawowych zależności"
     
     log "Instalacja dodatkowych pakietów..."
