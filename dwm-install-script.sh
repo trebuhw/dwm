@@ -38,7 +38,7 @@ if [ "$DISTRO" = "arch" ]; then
     check_success "Nie udało się zainstalować podstawowych zależności"
     
     log "Instalacja dodatkowych pakietów..."
-    sudo pacman -S --needed --noconfirm mc eza zoxide git sxiv nwg-look neovim vim fish fastfetch kitty stow starship trash-cli sxhkd picom dunst polkit-gnome numlockx network-manager-applet parcellite feh thumbler thunar thunar-archive-plugin thunar-volman
+    sudo pacman -S --needed --noconfirm mc eza zoxide git sxiv nwg-look neovim vim fish fastfetch kitty stow starship trash-cli sxhkd picom dunst polkit-gnome numlockx network-manager-applet parcellite feh tumbler thunar thunar-archive-plugin thunar-volman
     check_success "Nie udało się zainstalować dodatkowych pakietów"
 elif [ "$DISTRO" = "ubuntu" ]; then
     log "Instalacja zależności DWM dla Ubuntu..."
@@ -49,7 +49,7 @@ elif [ "$DISTRO" = "ubuntu" ]; then
     check_success "Nie udało się zainstalować podstawowych zależności"
     
     log "Instalacja dodatkowych pakietów..."
-    sudo apt install -y git mc eza zoxide neovim vim sxiv fish nwg-look fastfetch kitty stow starship trash-cli sxhkd nitrogen picom dunst policykit-1-gnome numlockx network-manager-gnome parcellite feh thumbler thunar thunar-archive-plugin thunar-volman 
+    sudo apt install -y git mc eza zoxide neovim vim sxiv fish nwg-look fastfetch kitty stow starship trash-cli sxhkd nitrogen picom dunst policykit-1-gnome numlockx network-manager-gnome parcellite feh tumbler thunar thunar-archive-plugin thunar-volman 
     check_success "Nie udało się zainstalować dodatkowych pakietów"
 fi
 
