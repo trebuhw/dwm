@@ -78,7 +78,7 @@ log "Tworzenie kopii zapasowych plików konfiguracyjnych..."
 # Stow
 log "Tworzenie symlinków za pomocą stow..."
 cd ~/.dotfiles || { error "Nie można przejść do katalogu ~/.dotfiles"; exit 1; }
-stow bash/ Xresources/ nvim/ vim/ fastfetch/ nsxiv/ sxiv/ xprofile/ suckless/ dunst/ fish/ kitty/ fish/ starship/ themes/ icons/ background/
+stow bash/ Xresources/ nvim/ vim/ fastfetch/ nsxiv/ sxiv/ xprofile/ suckless/ dunst/ fish/ kitty/ fish/ starship/ themes/ icons/ background/ fonts/
 check_success "Błąd podczas wykonywania stow"
 
 # Kompilacja i instalacja DWM
@@ -87,6 +87,13 @@ cd ~/.config/suckless/dwm || { error "Nie można przejść do katalogu DWM"; exi
 [ -f config.h ] && rm config.h
 sudo make && sudo make clean install
 check_success "Błąd podczas kompilacji DWM"
+
+# Kompilacja i instalacja DMENU
+log "Kompilacja i instalacja DMENU..."
+cd ~/.config/suckless/dmenu || { error "Nie można przejść do katalogu DMENU"; exit 1; }
+[ -f config.h ] && rm config.h
+sudo make && sudo make clean install
+check_success "Błąd podczas kompilacji DMENU"
 
 # Kompilacja i instalacja slstatus
 log "Kompilacja i instalacja slstatus..."
@@ -109,8 +116,8 @@ check_success "Nie udało się skopiować pliku .desktop"
 log "Instalacja zakończona pomyślnie!"
 log "Aby uruchomić DWM, wyloguj się i wybierz sesję DWM z menedżera logowania."
 
-source ~/.bashrc
-tofish
+sudo fc-cache -fv
+sudo chsh $USER -s /bin/fish && echo 'Now log out.'
 
 # Pytanie o reboot
 read -p "Czy chcesz teraz zrestartować system? [y/N] " -n 1 -r
