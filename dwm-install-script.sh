@@ -1,17 +1,15 @@
 #!/bin/bash
-# Skrypt instalacji DWM z https://github.com/trebuhw/.dotfiles
 
-# Funkcja do wyświetlania komunikatów
+set -e
+
 log() {
-    echo "$(tput setaf 2)[$(date +%T)]$(tput sgr0) $1"
+    echo -e "\e[32m[INFO]\e[0m $1"
 }
 
-# Funkcja do wyświetlania błędów
 error() {
-    echo "$(tput setaf 1)[ERROR]$(tput sgr0) $1"
+    echo -e "\e[31m[ERROR]\e[0m $1"
 }
 
-# Funkcja sprawdzająca czy ostatnia komenda zakończyła się sukcesem
 check_success() {
     if [ $? -ne 0 ]; then
         error "$1"
@@ -23,48 +21,133 @@ check_success() {
 if [ -f /etc/arch-release ]; then
     DISTRO="arch"
     log "Wykryto dystrybucję: Arch Linux"
-elif [ -f /etc/lsb-release ] && grep -q "Ubuntu" /etc/lsb-release; then
+elif [ -f /etc/lsb-release ] && grep -qi "ubuntu" /etc/lsb-release; then
     DISTRO="ubuntu"
     log "Wykryto dystrybucję: Ubuntu"
+elif [ -f /etc/debian_version ]; then
+    DISTRO="debian"
+    log "Wykryto dystrybucję: Debian"
+elif grep -qi "opensuse" /etc/os-release; then
+    DISTRO="opensuse"
+    log "Wykryto dystrybucję: openSUSE"
+elif grep -qi "fedora" /etc/os-release; then
+    DISTRO="fedora"
+    log "Wykryto dystrybucję: Fedora"
 else
-    error "Nieobsługiwana dystrybucja. Skrypt obsługuje tylko Arch Linux i Ubuntu."
+    error "Nieobsługiwana dystrybucja. Skrypt obsługuje: Arch, Ubuntu, Debian, Fedora, openSUSE."
     exit 1
 fi
 
-# Instalacja zależności w zależności od dystrybucji
+# Instalacja yay dla Arch Linux
+install_yay() {
+    if ! command -v yay &> /dev/null; then
+        log "Instalacja yay z AUR..."
+        tempdir=$(mktemp -d)
+        git clone https://aur.archlinux.org/yay.git "$tempdir/yay"
+        (
+            cd "$tempdir/yay" || exit 1
+            makepkg -si --noconfirm
+        )
+        rm -rf "$tempdir"
+        check_success "Nie udało się zainstalować yay"
+    else
+        log "yay jest już zainstalowany"
+    fi
+}
+
+# Zależności DWM
+install_dwm_deps() {
+    case "$DISTRO" in
+        arch)
+            log "Instalacja zależności DWM dla Arch Linux..."
+            sudo pacman -S --needed --noconfirm base-devel libx11 libxinerama libxft xorg-server xorg-xinit
+            ;;
+        ubuntu|debian)
+            log "Instalacja zależności DWM dla $DISTRO..."
+            sudo apt update
+            sudo apt install -y libharfbuzz-dev libxft-dev libpango1.0-dev build-essential \
+                libx11-dev libxinerama-dev libxcb1-dev libxcb-keysyms1-dev libxcb-icccm4-dev \
+                libx11-xcb-dev libxcb-util0-dev libxcb-randr0-dev suckless-tools libfreetype6-dev
+            ;;
+        fedora)
+            log "Instalacja zależności DWM dla Fedora..."
+            sudo dnf install -y @development-tools libX11-devel libXinerama-devel libXft-devel \
+                xorg-x11-server-Xorg xorg-x11-xinit
+            ;;
+        opensuse)
+            log "Instalacja zależności DWM dla openSUSE..."
+            sudo zypper install -y patterns-devel-base-devel_basis libX11-devel libXinerama-devel libXft-devel \
+                xorg-x11-server xinit
+            ;;
+    esac
+    check_success "Nie udało się zainstalować zależności DWM"
+}
+
+# Pakiety wspólne (repozytoria oficjalne)
+COMMON_PACKAGES=(
+    mc eza zoxide git sxiv neovim vim fish fastfetch kitty stow starship trash-cli
+    sxhkd picom dunst numlockx parcellite feh tumbler thunar thunar-archive-plugin thunar-volman
+)
+
+# Odpowiedniki i pakiety dodatkowe
+case "$DISTRO" in
+    arch)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" polkit-gnome network-manager-applet)
+        YAY_PACKAGES=(nwg-look)
+        ;;
+    ubuntu)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" nwg-look policykit-1-gnome network-manager-gnome)
+        ;;
+    debian)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" lxappearance policykit-1-gnome network-manager-gnome)
+        ;;
+    fedora)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" lxappearance polkit-gnome network-manager-applet)
+        ;;
+    opensuse)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" lxappearance polkit-gnome NetworkManager-applet)
+        ;;
+esac
+
+# Instalacja pakietów z repozytoriów
+install_repo_packages() {
+    local pkgs=("$@")
+    case "$DISTRO" in
+        arch)
+            sudo pacman -S --needed --noconfirm "${pkgs[@]}"
+            ;;
+        ubuntu|debian)
+            sudo apt install -y "${pkgs[@]}"
+            ;;
+        fedora)
+            sudo dnf install -y "${pkgs[@]}"
+            ;;
+        opensuse)
+            sudo zypper install -y "${pkgs[@]}"
+            ;;
+    esac
+}
+
+# Instalacja zależności
+install_dwm_deps
+
+# Instalacja yay + pacman packages
 if [ "$DISTRO" = "arch" ]; then
-    log "Instalacja zależności DWM dla Arch Linux..."
-    sudo pacman -S --needed --noconfirm base-devel libx11 libxinerama libxft xorg-server xorg-xinit
-    check_success "Nie udało się zainstalować podstawowych zależności"
-    
-    log "Instalacja dodatkowych pakietów..."
-    sudo pacman -S --needed --noconfirm mc eza zoxide git sxiv nwg-look neovim vim fish fastfetch kitty stow starship trash-cli sxhkd picom dunst polkit-gnome numlockx network-manager-applet parcellite feh tumbler thunar thunar-archive-plugin thunar-volman
-    check_success "Nie udało się zainstalować dodatkowych pakietów"
-elif [ "$DISTRO" = "ubuntu" ]; then
-    log "Instalacja zależności DWM dla Ubuntu..."
-    sudo apt update
-    check_success "Nie udało się zaktualizować listy pakietów"
-    
-    sudo apt install -y libharfbuzz-dev libxft-dev libpango1.0-dev build-essential libx11-dev libxinerama-dev libxft-dev libxcb1-dev libxcb-keysyms1-dev libxcb-icccm4-dev libx11-xcb-dev libxcb-util0-dev libxcb-randr0-dev suckless-tools libfreetype6-dev
-    check_success "Nie udało się zainstalować podstawowych zależności"
-    
-    log "Instalacja dodatkowych pakietów..."
-    sudo apt install -y git mc eza zoxide neovim vim sxiv fish nwg-look fastfetch kitty stow starship trash-cli sxhkd nitrogen picom dunst policykit-1-gnome numlockx network-manager-gnome parcellite feh tumbler thunar thunar-archive-plugin thunar-volman 
-    check_success "Nie udało się zainstalować dodatkowych pakietów"
+    install_yay
+    log "Instalacja pakietów z repozytoriów (pacman)..."
+    install_repo_packages "${PACMAN_PACKAGES[@]}"
+    check_success "Nie udało się zainstalować pakietów z pacman"
+
+    log "Instalacja pakietów z AUR (yay)..."
+    yay -S --needed --noconfirm "${YAY_PACKAGES[@]}"
+    check_success "Nie udało się zainstalować pakietów AUR"
+else
+    log "Instalacja pakietów..."
+    install_repo_packages "${PACMAN_PACKAGES[@]}"
+    check_success "Nie udało się zainstalować pakietów"
 fi
 
-# Klonowanie repozytorium
-log "Klonowanie repozytorium dotfiles..."
-if [ -d ~/.dotfiles ]; then
-    read -p "Katalog ~/.dotfiles już istnieje. Czy chcesz go nadpisać? [y/N] " -n 1 -r
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        rm -rf ~/.dotfiles
-    else
-        error "Anulowano. Katalog ~/.dotfiles już istnieje."
-        exit 1
-    fi
-fi
+log "Instalacja zakończona pomyślnie!"
 
 git clone https://github.com/trebuhw/.dotfiles ~/.dotfiles
 check_success "Nie udało się sklonować repozytorium"
@@ -74,10 +157,10 @@ log "Tworzenie kopii zapasowych plików konfiguracyjnych..."
 [ -f ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
 [ -f ~/.bash_logout ] && mv ~/.bash_logout ~/.bash_logout.bak
 [ -f ~/.bash_profile ] && mv ~/.bash_profile ~/.bash_profile.bak
-[ -f ~/.gtkrc-2.0 ] && mv ~/.gtk-2.0 ~/.gtkrc-2.0.bak
-[ -f ~/.config/gtk-2.0 ] && mv ~/.config/gtk-2.0 ~/gtk-2.0.bak
-[ -f ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/gtk-3.0.bak
-[ -f ~/.config/gtk-4.0 ] && mv ~/.config/gtk-4.0 ~/gtk-4.0.bak
+[ -f ~/.gtkrc-2.0 ] && mv ~/.gtkrc-2.0 ~/.gtkrc-2.0.bak
+[ -d ~/.config/gtk-2.0 ] && mv ~/.config/gtk-2.0 ~/gtk-2.0.bak
+[ -d ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/gtk-3.0.bak
+[ -d ~/.config/gtk-4.0 ] && mv ~/.config/gtk-4.0 ~/gtk-4.0.bak
 
 # Stow
 log "Tworzenie symlinków za pomocą stow..."
