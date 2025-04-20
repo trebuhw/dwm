@@ -38,7 +38,7 @@ if [ "$DISTRO" = "arch" ]; then
     check_success "Nie udało się zainstalować podstawowych zależności"
     
     log "Instalacja dodatkowych pakietów..."
-    sudo pacman -S --needed --noconfirm git neovim vim nsxiv fish fastfetch kitty stow starship trash-cli sxhkd nitrogen picom dunst polkit-gnome numlockx network-manager-applet parcellite feh
+    sudo pacman -S --needed --noconfirm git nwg-look lxappearance nitroogen neovim vim nsxiv fish fastfetch kitty stow starship trash-cli sxhkd nitrogen picom dunst polkit-gnome numlockx network-manager-applet parcellite feh
     check_success "Nie udało się zainstalować dodatkowych pakietów"
 elif [ "$DISTRO" = "ubuntu" ]; then
     log "Instalacja zależności DWM dla Ubuntu..."
@@ -49,7 +49,7 @@ elif [ "$DISTRO" = "ubuntu" ]; then
     check_success "Nie udało się zainstalować podstawowych zależności"
     
     log "Instalacja dodatkowych pakietów..."
-    sudo apt install -y git neovim vim fish fastfetch kitty nsxiv stow starship trash-cli sxhkd nitrogen picom dunst policykit-1-gnome numlockx network-manager-gnome parcellite feh neofetch
+    sudo apt install -y git neovim vim fish nwg-look lxappearance nitrogen fastfetch kitty nsxiv stow starship trash-cli sxhkd nitrogen picom dunst policykit-1-gnome numlockx network-manager-gnome parcellite feh neofetch
     check_success "Nie udało się zainstalować dodatkowych pakietów"
 fi
 
