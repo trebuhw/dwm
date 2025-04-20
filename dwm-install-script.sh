@@ -185,21 +185,21 @@ check_success "Błąd podczas wykonywania stow"
 log "Kompilacja i instalacja DWM..."
 cd ~/.config/suckless/dwm || { error "Nie można przejść do katalogu DWM"; exit 1; }
 [ -f config.h ] && rm config.h
-sudo make && sudo make clean install
+sudo make && sudo make clean install && rm -f config.h
 check_success "Błąd podczas kompilacji DWM"
 
 # Kompilacja i instalacja DMENU
 log "Kompilacja i instalacja DMENU..."
 cd ~/.config/suckless/dmenu || { error "Nie można przejść do katalogu DMENU"; exit 1; }
 [ -f config.h ] && rm config.h
-sudo make && sudo make clean install && rm config.h
+sudo make && sudo make clean install && rm -f config.h
 check_success "Błąd podczas kompilacji DMENU"
 
 # Kompilacja i instalacja slstatus
 log "Kompilacja i instalacja slstatus..."
 cd ~/.config/suckless/slstatus || { error "Nie można przejść do katalogu slstatus"; exit 1; }
 [ -f config.h ] && rm config.h
-sudo make && sudo make clean install && rm config.h
+sudo make && sudo make clean install && rm -f config.h
 check_success "Błąd podczas kompilacji slstatus"
 
 # Kompilacja i instalacja st
