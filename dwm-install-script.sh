@@ -162,7 +162,7 @@ if [ -d ~/.dotfiles ]; then
     fi
 fi
 
-git clone https://github.com/trebuhw/.dotfiles ~/.dotfiles
+git clone --dept 1 https://github.com/trebuhw/.dotfiles ~/.dotfiles
 check_success "Nie udało się sklonować repozytorium"
 
 # Tworzenie kopii zapasowych
