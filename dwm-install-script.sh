@@ -149,6 +149,19 @@ fi
 
 log "Instalacja zakończona pomyślnie!"
 
+# Klonowanie repozytorium
+log "Klonowanie repozytorium dotfiles..."
+if [ -d ~/.dotfiles ]; then
+    read -p "Katalog ~/.dotfiles już istnieje. Czy chcesz go nadpisać? [y/N] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        rm -rf ~/.dotfiles
+    else
+        error "Anulowano. Katalog ~/.dotfiles już istnieje."
+        exit 1
+    fi
+fi
+
 git clone https://github.com/trebuhw/.dotfiles ~/.dotfiles
 check_success "Nie udało się sklonować repozytorium"
 
