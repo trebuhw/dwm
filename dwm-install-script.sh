@@ -38,7 +38,7 @@ if [ "$DISTRO" = "arch" ]; then
     check_success "Nie udało się zainstalować podstawowych zależności"
     
     log "Instalacja dodatkowych pakietów..."
-    sudo pacman -S --needed --noconfirm eza zoxide git sxiv nwg-look lxappearance nitroogen neovim vim nsxiv fish fastfetch kitty stow starship trash-cli sxhkd nitrogen picom dunst polkit-gnome numlockx network-manager-applet parcellite feh
+    sudo pacman -S --needed --noconfirm mc eza zoxide git sxiv nwg-look neovim vim fish fastfetch kitty stow starship trash-cli sxhkd picom dunst polkit-gnome numlockx network-manager-applet parcellite feh thumbler thunar thunar-archive-plugin thunar-volman
     check_success "Nie udało się zainstalować dodatkowych pakietów"
 elif [ "$DISTRO" = "ubuntu" ]; then
     log "Instalacja zależności DWM dla Ubuntu..."
@@ -49,7 +49,7 @@ elif [ "$DISTRO" = "ubuntu" ]; then
     check_success "Nie udało się zainstalować podstawowych zależności"
     
     log "Instalacja dodatkowych pakietów..."
-    sudo apt install -y git eza zoxide neovim vim sxiv fish nwg-look lxappearance nitrogen fastfetch kitty nsxiv stow starship trash-cli sxhkd nitrogen picom dunst policykit-1-gnome numlockx network-manager-gnome parcellite feh neofetch
+    sudo apt install -y git mc eza zoxide neovim vim sxiv fish nwg-look fastfetch kitty stow starship trash-cli sxhkd nitrogen picom dunst policykit-1-gnome numlockx network-manager-gnome parcellite feh thumbler thunar thunar-archive-plugin thunar-volman 
     check_success "Nie udało się zainstalować dodatkowych pakietów"
 fi
 
@@ -78,7 +78,7 @@ log "Tworzenie kopii zapasowych plików konfiguracyjnych..."
 # Stow
 log "Tworzenie symlinków za pomocą stow..."
 cd ~/.dotfiles || { error "Nie można przejść do katalogu ~/.dotfiles"; exit 1; }
-stow bash/ Xresources/ nvim/ vim/ fastfetch/ nsxiv/ sxiv/ xprofile/ suckless/ dunst/ ranger/ fish/ kitty/ fish/ themes/ icons/ background/ fonts/
+stow bash/ Xresources/ nvim/ mc/ vim/ sxiv/ xprofile/ suckless/ dunst/ ranger/ fish/ kitty/ fish/ themes/ icons/ background/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/
 check_success "Błąd podczas wykonywania stow"
 
 # Kompilacja i instalacja DWM
@@ -116,7 +116,30 @@ check_success "Nie udało się skopiować pliku .desktop"
 log "Instalacja zakończona pomyślnie!"
 log "Aby uruchomić DWM, wyloguj się i wybierz sesję DWM z menedżera logowania."
 
+# Dodanie czcionek
 sudo fc-cache -fv
+
+# Ustawienie theme gtk
+gsettings set org.gnome.desktop.interface cursor-theme 'Bibata-Modern-Ice' 
+gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Dark"
+gsettings set org.gnome.desktop.wm.preferences theme "Catppuccin-Dark"
+gsettings set org.gnome.desktop.interface icon-theme "Tela-circle-dracula-dark"
+gsettings set org.gnome.desktop.interface font-name 'JetBrainsMono Nerd Font'
+ln -sf ~/.config/gtk-3.0/settings.ini ~/.config/gtk-4.0/settings.ini
+
+# Ustawienie konfiguracji programów root
+sudo ln -sf ~/dotfiles/gtkrc-2.0/.gtkrc-2.0 /root/.gtkrc-2.0
+sudo ln -sf ~/dotfiles/vim/.vimrc /root/.vimrc
+sudo ln -sf ~/dotfiles/vim/.viminfo /root/.viminfo
+sudo ln -sf ~/dotfiles/vim/.config/vim /root/.config/vim
+sudo ln -sf ~/dotfiles/nvim/.config/nvim /root/.config/nvim
+sudo ln -sf ~/dotfiles/mc/.config/mc /root/.config/mc
+sudo ln -sf ~/dotfiles/gtk-4.0/.config/gtk-4.0 /root/.config/gtk-4.0
+sudo ln -sf ~/dotfiles/gtk-3.0/.config/gtk-3.0 /root/.config/gtk-3.0
+sudo ln -sf ~/dotfiles/gtk-2.0/.config/gtk-2.0 /root/.config/gtk-2.0
+sudo ln -sf ~/dotfiles/ranger/.config/ranger /root/.config/ranger
+
+# Zmiana powłoki shell
 sudo chsh $USER -s /bin/fish && echo 'Now log out.'
 
 # Pytanie o reboot
