@@ -177,7 +177,7 @@ log "Tworzenie kopii zapasowych plików konfiguracyjnych..."
 # Stow
 log "Tworzenie symlinków za pomocą stow..."
 cd ~/.dotfiles || { error "Nie można przejść do katalogu ~/.dotfiles"; exit 1; }
-stow Xresources/ alacrity/ background/ bash/ dunst/ fish/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/ icons/ kitty/ mc/ nvim/ ranger/ suckless/ nsxiv/ themes/ vim/ xprofile/ yazi/ zathura/
+stow Xresources/ allacrity/ background/ bash/ dunst/ fish/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/ icons/ kitty/ mc/ nvim/ ranger/ suckless/ nsxiv/ themes/ vim/ xprofile/ yazi/ zathura/
 check_success "Błąd podczas wykonywania stow"
 
 # Kompilacja i instalacja DWM
