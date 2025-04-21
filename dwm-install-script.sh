@@ -85,7 +85,7 @@ install_dwm_deps() {
 
 # Pakiety wspólne (repozytoria oficjalne)
 COMMON_PACKAGES=(
-    7zip alacritty bash-completion bat blueman brightnessctl btop cpuid cups curl dunst eza fastfetch feh file-roller firefox fish font-manager fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld mlocate neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot starship stow sxhkd nsxiv thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs  xf86-input-synaptics xf86-video-intel xfce4-notifyd yazi zathura zoxide
+    alacritty bash-completion bat blueman brightnessctl btop cups curl dunst eza fastfetch feh file-roller firefox fish font-manager fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld mlocate neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot starship stow sxhkd nsxiv thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs  xf86-input-synaptics xf86-video-intel xfce4-notifyd yazi zathura zoxide
 )
 
 # Odpowiedniki i pakiety dodatkowe
