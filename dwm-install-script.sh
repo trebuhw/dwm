@@ -85,7 +85,7 @@ install_dwm_deps() {
 
 # Pakiety wspólne (repozytoria oficjalne)
 COMMON_PACKAGES=(
-    bash-completion bat blueman brightnessctl btop cups curl dunst feh file-roller firefox fish font-manager fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld mlocate neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd wezterm yazi zathura zathura-pdf-mupdf zoxide
+    bash-completion bat blueman brightnessctl btop cups curl dunst feh file-roller firefox fish font-manager fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld mlocate neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura zathura-pdf-mupdf zoxide
 )
 
 # Odpowiedniki i pakiety dodatkowe
@@ -95,16 +95,16 @@ case "$DISTRO" in
         YAY_PACKAGES=(google-chrome lm_sensors nwg-look ueberzug)
         ;;
     ubuntu)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty eza fastfetch nwg-look policykit-1-gnome network-manager-gnome starship sxiv xserver-xorg-input-synaptics xserver-xorg-video-intel)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty eza fastfetch nwg-look policykit-1-gnome network-manager-gnome starship sxiv xserver-xorg-input-synaptics xserver-xorg-video-intel wezterm yazi)
         ;;
     debian)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty neofetch lxappearance policykit-1-gnome network-manager-gnome xserver-xorg-input-synaptics xserver-xorg-video-intel )
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty neofetch lxappearance policykit-1-gnome network-manager-gnome xserver-xorg-input-synaptics xserver-xorg-video-intel)
         ;;
     fedora)
         PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty fastfetch lxappearance polkit-gnome network-manager-applet sxiv xorg-x11-drv-synaptics xorg-x11-drv-intel )
         ;;
     opensuse)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty eza fastfetch lxappearance opi polkit-gnome NetworkManager-applet starship nsxiv sensors ueberzugpp xorg-x11-driver-synaptics xorg-x11-driver-intel)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty eza fastfetch lxappearance opi polkit-gnome NetworkManager-applet starship nsxiv sensors ueberzugpp xorg-x11-driver-synaptics xorg-x11-driver-intel wezterm yazi)
         ;;
 esac
 
