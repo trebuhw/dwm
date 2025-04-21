@@ -122,7 +122,7 @@ install_repo_packages() {
             sudo dnf install -y "${pkgs[@]}"
             ;;
         opensuse)
-            sudo sudo zypper --non-interactive install --no-recommends" "${pkgs[@]}"
+            sudo sudo zypper --non-interactive install --no-recommends "${pkgs[@]}"
             ;;
     esac
 }
@@ -161,7 +161,7 @@ if [ -d ~/.dotfiles ]; then
     fi
 fi
 
-git clone --dept 1 https://github.com/trebuhw/.dotfiles ~/.dotfiles
+git clone --depth 1 https://github.com/trebuhw/.dotfiles ~/.dotfiles
 check_success "Nie udało się sklonować repozytorium"
 
 # Tworzenie kopii zapasowych
