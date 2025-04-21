@@ -60,7 +60,7 @@ install_dwm_deps() {
     case "$DISTRO" in
         arch)
             log "Instalacja zależności DWM dla Arch Linux..."
-            sudo pacman -S --needed --noconfirm base-devel libx11 libxinerama libxft xorg-server xorg-xinit
+            sudo pacman -S --needed --noconfirm base-devel libx11 libxinerama libxft xorg xorg-server xorg-xinit
             ;;
         ubuntu|debian)
             log "Instalacja zależności DWM dla $DISTRO..."
@@ -85,15 +85,14 @@ install_dwm_deps() {
 
 # Pakiety wspólne (repozytoria oficjalne)
 COMMON_PACKAGES=(
-    mc eza zoxide git sxiv neovim vim fish fastfetch kitty stow starship trash-cli
-    sxhkd picom dunst numlockx parcellite feh tumbler thunar thunar-archive-plugin thunar-volman
+    7zip alacritty bash-completion bat blueman brightnessctl btop cpuid cups curl dunst eza fastfetch feh file-roller firefox fish font-manager fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty libreoffice libreoffice-l10n-pl mako meld mlocate neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot sensors starship stow sxhkd nsxiv thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs  xf86-input-synaptics xf86-video-intel xfce4-notifyd xwininfo yazi zathura zathura-plugin-pdf-poppler zoxide
 )
 
 # Odpowiedniki i pakiety dodatkowe
 case "$DISTRO" in
     arch)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" polkit-gnome network-manager-applet)
-        YAY_PACKAGES=(nwg-look)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" polkit-gnome network-manager-applet os-prober)
+        YAY_PACKAGES=(google-chrome lm_sensors nwg-look ueberzug)
         ;;
     ubuntu)
         PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" nwg-look policykit-1-gnome network-manager-gnome)
@@ -105,7 +104,7 @@ case "$DISTRO" in
         PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" lxappearance polkit-gnome network-manager-applet)
         ;;
     opensuse)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" lxappearance polkit-gnome NetworkManager-applet)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" lxappearance opi polkit-gnome NetworkManager-applet sensors ueberzugpp)
         ;;
 esac
 
@@ -123,7 +122,7 @@ install_repo_packages() {
             sudo dnf install -y "${pkgs[@]}"
             ;;
         opensuse)
-            sudo zypper install -y "${pkgs[@]}"
+            sudo sudo zypper --non-interactive install --no-recommends" "${pkgs[@]}"
             ;;
     esac
 }
@@ -178,7 +177,7 @@ log "Tworzenie kopii zapasowych plików konfiguracyjnych..."
 # Stow
 log "Tworzenie symlinków za pomocą stow..."
 cd ~/.dotfiles || { error "Nie można przejść do katalogu ~/.dotfiles"; exit 1; }
-stow bash/ Xresources/ nvim/ mc/ vim/ sxiv/ xprofile/ suckless/ dunst/ ranger/ fish/ kitty/ fish/ themes/ icons/ background/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/
+stow Xresources/ alacrity/ background/ bash/ dunst/ fish/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/ icons/ kitty/ mc/ nvim/ ranger/ suckless/ nsxiv/ themes/ vim/ xprofile/ yazi/ zathura/
 check_success "Błąd podczas wykonywania stow"
 
 # Kompilacja i instalacja DWM
@@ -210,7 +209,7 @@ check_success "Błąd podczas kompilacji st"
 
 # Instalacja pliku .desktop
 log "Kopiowanie pliku .desktop..."
-sudo cp ~/.config/suckless/usr/share/xsessions/dwm.desktop /usr/share/xsessions/
+[ -d ~/usr/share/xsessions ] && sudo cp ~/.config/suckless/usr/share/xsessions/dwm.desktop /usr/share/xsessions/
 check_success "Nie udało się skopiować pliku .desktop"
 
 log "Instalacja zakończona pomyślnie!"
