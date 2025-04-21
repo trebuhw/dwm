@@ -85,13 +85,13 @@ install_dwm_deps() {
 
 # Pakiety wspólne (repozytoria oficjalne)
 COMMON_PACKAGES=(
-    7zip alacritty bash-completion bat blueman brightnessctl btop cpuid cups curl dunst eza fastfetch feh file-roller firefox fish font-manager fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty libreoffice libreoffice-l10n-pl mako meld mlocate neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot sensors starship stow sxhkd nsxiv thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs  xf86-input-synaptics xf86-video-intel xfce4-notifyd xwininfo yazi zathura zathura-plugin-pdf-poppler zoxide
+    7zip alacritty bash-completion bat blueman brightnessctl btop cpuid cups curl dunst eza fastfetch feh file-roller firefox fish font-manager fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld mlocate neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot starship stow sxhkd nsxiv thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs  xf86-input-synaptics xf86-video-intel xfce4-notifyd yazi zathura zoxide
 )
 
 # Odpowiedniki i pakiety dodatkowe
 case "$DISTRO" in
     arch)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" polkit-gnome network-manager-applet os-prober)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" libreoffice-fresh libreoffice-fres-pl polkit-gnome network-manager-applet os-prober)
         YAY_PACKAGES=(google-chrome lm_sensors nwg-look ueberzug)
         ;;
     ubuntu)
