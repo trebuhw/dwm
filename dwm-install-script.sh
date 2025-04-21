@@ -91,7 +91,7 @@ COMMON_PACKAGES=(
 # Odpowiedniki i pakiety dodatkowe
 case "$DISTRO" in
     arch)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" libreoffice-fresh libreoffice-fres-pl polkit-gnome network-manager-applet os-prober)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet os-prober)
         YAY_PACKAGES=(google-chrome lm_sensors nwg-look ueberzug)
         ;;
     ubuntu)
