@@ -209,7 +209,8 @@ check_success "Błąd podczas kompilacji st"
 
 # Instalacja pliku .desktop
 log "Kopiowanie pliku .desktop..."
-[ -d ~/usr/share/xsessions ] && sudo cp ~/.config/suckless/usr/share/xsessions/dwm.desktop /usr/share/xsessions/
+[ -d /usr/share/xsessions ] || sudo mkdir -p /usr/share/xsessions
+sudo cp ~/.config/suckless/usr/share/xsessions/dwm.desktop /usr/share/xsessions/
 check_success "Nie udało się skopiować pliku .desktop"
 
 log "Instalacja zakończona pomyślnie!"
