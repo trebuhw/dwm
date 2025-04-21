@@ -85,26 +85,26 @@ install_dwm_deps() {
 
 # Pakiety wspólne (repozytoria oficjalne)
 COMMON_PACKAGES=(
-    alacritty bash-completion bat blueman brightnessctl btop cups curl dunst eza fastfetch feh file-roller firefox fish font-manager fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld mlocate neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot starship stow sxhkd nsxiv thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs  xf86-input-synaptics xf86-video-intel xfce4-notifyd wezterm yazi zathura zathura-pdf-mupdf zoxide
+    bash-completion bat blueman brightnessctl btop cups curl dunst feh file-roller firefox fish font-manager fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld mlocate neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd wezterm yazi zathura zathura-pdf-mupdf zoxide
 )
 
 # Odpowiedniki i pakiety dodatkowe
 case "$DISTRO" in
     arch)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet os-prober)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty eza fastfetch libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv os-prober starship xf86-input-synaptics xf86-video-intel wezterm yazi)
         YAY_PACKAGES=(google-chrome lm_sensors nwg-look ueberzug)
         ;;
     ubuntu)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" nwg-look policykit-1-gnome network-manager-gnome)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty eza fastfetch nwg-look policykit-1-gnome network-manager-gnome starship sxiv xserver-xorg-input-synaptics xserver-xorg-video-intel)
         ;;
     debian)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" lxappearance policykit-1-gnome network-manager-gnome)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty neofetch lxappearance policykit-1-gnome network-manager-gnome xserver-xorg-input-synaptics xserver-xorg-video-intel )
         ;;
     fedora)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" lxappearance polkit-gnome network-manager-applet)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty fastfetch lxappearance polkit-gnome network-manager-applet sxiv xorg-x11-drv-synaptics xorg-x11-drv-intel )
         ;;
     opensuse)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" lxappearance opi polkit-gnome NetworkManager-applet sensors ueberzugpp)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty eza fastfetch lxappearance opi polkit-gnome NetworkManager-applet starship nsxiv sensors ueberzugpp xorg-x11-driver-synaptics xorg-x11-driver-intel)
         ;;
 esac
 
@@ -177,7 +177,7 @@ log "Tworzenie kopii zapasowych plików konfiguracyjnych..."
 # Stow
 log "Tworzenie symlinków za pomocą stow..."
 cd ~/.dotfiles || { error "Nie można przejść do katalogu ~/.dotfiles"; exit 1; }
-stow Xresources/ alacritty/ background/ bash/ btop/ dunst/ fish/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/ icons/ kitty/ mc/ nvim/ ranger/ rofi/ suckless/ nsxiv/ themes/ vim/ xprofile/ yazi/ wezterm/ zathura/
+stow Xresources/ alacritty/ background/ bash/ btop/ dunst/ fish/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/ icons/ kitty/ mc/ nvim/ ranger/ rofi/ suckless/ nsxiv/ themes/ sxiv/ vim/ xprofile/ yazi/ wezterm/ zathura/
 check_success "Błąd podczas wykonywania stow"
 
 # Kompilacja i instalacja DWM
