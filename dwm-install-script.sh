@@ -76,7 +76,7 @@ install_dwm_deps() {
             ;;
         opensuse)
             log "Instalacja zależności DWM dla openSUSE..."
-            sudo zypper install -y patterns-devel-base-devel_basis libX11-devel libXinerama-devel libXft-devel \
+            sudo zypper install -y gcc harfbuzz-devel  patterns-devel-base-devel_basis libX11-devel libXinerama-devel libXft-devel make \
                 xorg-x11-server xinit
             ;;
     esac
