@@ -104,7 +104,7 @@ case "$DISTRO" in
         PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty fastfetch lxappearance polkit network-manager-applet sxiv xorg-x11-drv-synaptics xorg-x11-drv-intel )
         ;;
     opensuse)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty eza fastfetch font-manager lxappearance opi polkit-gnome NetworkManager-applet mlocate starship nsxiv sensors ueberzugpp xorg-x11-driver-synaptics xorg-x11-driver-intel wezterm yazi)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty eza fastfetch font-manager lxappearance opi polkit-gnome NetworkManager-applet mlocate starship sxiv sensors ueberzugpp xorg-x11-driver-synaptics xorg-x11-driver-intel wezterm yazi)
         ;;
 esac
 
