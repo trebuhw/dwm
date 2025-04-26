@@ -244,6 +244,9 @@ sudo ln -sf ~/dotfiles/ranger/.config/ranger /root/.config/ranger
 # Zmiana powłoki shell
 sudo chsh $USER -s /bin/fish && echo 'Now log out.'
 
+# Zmiana powłoki shell - tylko dla opensuse
+# sudo chsh -s /usr/bin/fish $USER && echo 'Now log out.'
+
 # Pytanie o reboot
 read -p "Czy chcesz teraz zrestartować system? [y/N] " -n 1 -r
 echo
