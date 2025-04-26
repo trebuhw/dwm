@@ -97,7 +97,7 @@ case "$DISTRO" in
     arch)
         PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl lm_sensors mousepad network-manager-applet nsxiv nwg-look mlocate os-prober polkit-gnome starship swappy tealdeer wezterm wofi yazi)
         YAY_PACKAGES=(
-        bibata-cursor-theme brother-dcp1610w brscan4 github-desktop google-chrome hyprland-qtutils-git hyprutils-git lpm moc-pulse mkinitcpio-firmware ookla-speedtest-bin simple-sddm-theme-git sublime-text-4 waypaper wlogout
+        bibata-cursor-theme brother-dcp1610w brscan4 github-desktop google-chrome hyprland-qtutils-git hyprutils-git lpm moc-pulse mkinitcpio-firmware ookla-speedtest-bin simple-sddm-theme-git sublime-text-4 waypaper wlogout)
         ;;
     ubuntu)
         PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" 
