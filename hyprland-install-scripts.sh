@@ -356,9 +356,12 @@ stow Xresources/ alacritty/ background/ bash/ btop/ dunst/ fish/ foot/ fonts/ gt
 check_success "Błąd podczas wykonywania stow"
 
 # SDDM
-[ -d ~/etc/sddm.conf.d ] && sudo mv /etc/sddm.conf.d/ /etc/sddm.conf.d.bak
+[ -d /etc/sddm.conf.d ] && sudo mv /etc/sddm.conf.d/ /etc/sddm.conf.d.bak
 sudo ln -sf ~/.dotfiles/etc/.config/sddm.conf.d /etc/sddm.conf.d
-sudo ln -sf ~/.dotfiles/usr/share/sddm/themes/simple-sddm/ /usr/share/sddm/themes/simple-sddm/
+
+[ -d /usr/share/sddm/themes/simple-sddm ] && sudo mv /usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/simple-sddm.bak
+# sudo cp -r ~/.dotfiles/usr/.config/usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/simple-sddm 
+sudo ln -sf ~/.dotfiles/usr/.config/usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/simple-sddm 
 
 # Dodanie czcionek
 sudo fc-cache -fv
