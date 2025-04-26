@@ -10,6 +10,14 @@ error() {
     echo -e "\e[31m[ERROR]\e[0m $1"
 }
 
+success() {
+    echo -e "\e[34m[SUCCESS]\e[0m $1"
+}
+
+warning() {
+    echo -e "\e[33m[WARNING]\e[0m $1"
+}
+
 check_success() {
     if [ $? -ne 0 ]; then
         error "$1"
@@ -76,7 +84,7 @@ install_dwm_deps() {
             ;;
         opensuse)
             log "Instalacja zależności DWM dla openSUSE..."
-            sudo zypper install -y gcc harfbuzz-devel  patterns-devel-base-devel_basis libX11-devel libXinerama-devel libXft-devel make \
+            sudo sudo zypper --non-interactive install --no-recommends gcc harfbuzz-devel patterns-devel-base-devel_basis libX11-devel libXinerama-devel libXft-devel make \
                 xorg-x11-server xinit
             ;;
     esac
@@ -91,8 +99,8 @@ COMMON_PACKAGES=(
 # Odpowiedniki i pakiety dodatkowe
 case "$DISTRO" in
     arch)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate os-prober starship xf86-input-synaptics xf86-video-intel wezterm yazi)
-        YAY_PACKAGES=(google-chrome lm_sensors nwg-look ueberzug)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate os-prober starship tldr xf86-input-synaptics xf86-video-intel wezterm yazi)
+        YAY_PACKAGES=(google-chrome lm_sensors nwg-look ueberzug waypaper)
         ;;
     ubuntu)
         PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty eza fastfetch font-manager nwg-look policykit-1-gnome network-manager-gnome mlocate starship sxiv xserver-xorg-input-synaptics xserver-xorg-video-intel wezterm yazi)
@@ -122,10 +130,171 @@ install_repo_packages() {
             sudo dnf install -y "${pkgs[@]}"
             ;;
         opensuse)
-            sudo sudo zypper --non-interactive install --no-recommends "${pkgs[@]}"
+            sudo zypper --non-interactive install --no-recommends "${pkgs[@]}"
             ;;
     esac
 }
+
+# Funkcje dla specyficznych konfiguracji dystrybucji
+# ===================================================
+
+# Specyficzne konfiguracje dla Arch Linux
+arch_specific_configs() {
+    log "Wykonywanie konfiguracji specyficznych dla Arch Linux..."
+    
+    # Zmiana powłoki shell
+    if command -v fish &> /dev/null; then
+        log "Zmiana powłoki na fish..."
+        sudo chsh $USER -s /bin/fish && success "Powłoka zmieniona na fish. Wyloguj się, aby zastosować zmiany."
+    fi
+    
+    # Włączanie i uruchamianie usług
+    log "Konfiguracja usług systemowych..."
+    sudo systemctl enable --now NetworkManager 
+    sudo systemctl enable --now cups
+    
+    # Konfiguracja pacman
+    log "Konfigurowanie pacman..."
+    if ! grep -q "Color" /etc/pacman.conf; then
+        sudo sed -i 's/#Color/Color/' /etc/pacman.conf && success "Włączono kolorowe wyjście pacman."
+    fi
+    
+    if ! grep -q "^ParallelDownloads" /etc/pacman.conf; then
+    sudo sed -i '/\[options\]/a ParallelDownloads = 50' /etc/pacman.conf && success "Dodano ParallelDownloads = 50 do pacman.conf."
+    else
+    sudo sed -i 's/^#\?ParallelDownloads *= *.*/ParallelDownloads = 50/' /etc/pacman.conf && success "Ustawiono ParallelDownloads = 50 w pacman.conf."
+    fi
+
+    # Optymalizacja systemu
+    log "Optymalizacja systemu Arch..."
+    echo "vm.swappiness=10" | sudo tee /etc/sysctl.d/99-swappiness.conf > /dev/null
+    
+    # Optymalizacja SSD (jeśli jest)
+    if [ -d "/sys/block/sda/queue/rotational" ] && [ "$(cat /sys/block/sda/queue/rotational)" -eq 0 ]; then
+        log "Wykryto SSD, optymalizacja..."
+        echo "vm.vfs_cache_pressure=50" | sudo tee -a /etc/sysctl.d/99-ssd.conf > /dev/null
+        sudo systemctl enable fstrim.timer
+    fi
+}
+
+# Specyficzne konfiguracje dla Ubuntu
+ubuntu_specific_configs() {
+    log "Wykonywanie konfiguracji specyficznych dla Ubuntu..."
+    
+    # Zmiana powłoki shell
+    if command -v fish &> /dev/null; then
+        log "Zmiana powłoki na fish..."
+        sudo chsh -s /usr/bin/fish $USER && success "Powłoka zmieniona na fish. Wyloguj się, aby zastosować zmiany."
+    fi
+    
+    # Konfiguracja APT
+    log "Konfigurowanie APT..."
+    echo 'APT::Install-Recommends "false";' | sudo tee /etc/apt/apt.conf.d/99custom > /dev/null
+    echo 'APT::Install-Suggests "false";' | sudo tee -a /etc/apt/apt.conf.d/99custom > /dev/null
+    
+    # Włączanie firewall
+    log "Konfiguracja firewall..."
+    sudo ufw enable
+    
+    # Usuwanie snapd jeśli użytkownik tego chce
+    read -p "Czy chcesz usunąć snapd? [y/N] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        log "Usuwanie snapd..."
+        sudo apt purge -y snapd
+        sudo apt autoremove -y
+        mkdir -p $HOME/.config/autostart/
+        # Zapobieganie reinstalacji snapd
+        cat > $HOME/.config/autostart/nosnap.desktop << EOF
+[Desktop Entry]
+Type=Application
+Name=NoSnap
+Exec=sudo apt-mark hold snapd
+EOF
+        success "Usunięto snapd i zabezpieczono przed reinstalacją."
+    fi
+}
+
+# Specyficzne konfiguracje dla Debian
+debian_specific_configs() {
+    log "Wykonywanie konfiguracji specyficznych dla Debian..."
+    
+    # Zmiana powłoki shell
+    if command -v fish &> /dev/null; then
+        log "Zmiana powłoki na fish..."
+        sudo chsh -s /usr/bin/fish $USER && success "Powłoka zmieniona na fish. Wyloguj się, aby zastosować zmiany."
+    fi
+    
+    # Konfiguracja APT (podobnie jak Ubuntu, ale może być nieco inaczej)
+    log "Konfigurowanie APT..."
+    echo 'APT::Install-Recommends "false";' | sudo tee /etc/apt/apt.conf.d/99custom > /dev/null
+    echo 'APT::Install-Suggests "false";' | sudo tee -a /etc/apt/apt.conf.d/99custom > /dev/null
+    
+    # Dodanie repozytoriów non-free jeśli ich nie ma
+    if ! grep -q "non-free" /etc/apt/sources.list; then
+        log "Dodawanie repozytoriów non-free..."
+        sudo sed -i 's/main/main non-free contrib/g' /etc/apt/sources.list
+        sudo apt update
+    fi
+    
+    # Konfiguracja dnsmasq dla szybszego DNS
+    log "Konfiguracja dnsmasq dla szybszego rozwiązywania DNS..."
+    sudo apt install -y dnsmasq
+    echo "listen-address=127.0.0.1" | sudo tee /etc/dnsmasq.conf > /dev/null
+    echo "nameserver 127.0.0.1" | sudo tee /etc/resolv.conf.head > /dev/null
+    sudo systemctl restart dnsmasq
+}
+
+# Specyficzne konfiguracje dla Fedora
+fedora_specific_configs() {
+    log "Wykonywanie konfiguracji specyficznych dla Fedora..."
+    
+    # Zmiana powłoki shell
+    if command -v fish &> /dev/null; then
+        log "Zmiana powłoki na fish..."
+        sudo chsh -s /bin/fish $USER && success "Powłoka zmieniona na fish. Wyloguj się, aby zastosować zmiany."
+    fi
+    
+    # Optymalizacja DNF
+    log "Optymalizacja DNF..."
+    echo "fastestmirror=true" | sudo tee -a /etc/dnf/dnf.conf > /dev/null
+    echo "max_parallel_downloads=10" | sudo tee -a /etc/dnf/dnf.conf > /dev/null
+    echo "deltarpm=true" | sudo tee -a /etc/dnf/dnf.conf > /dev/null
+    
+    # Dodanie RPM Fusion jeśli nie ma
+    if ! dnf repolist | grep -q "rpmfusion-free"; then
+        log "Dodawanie repozytoriów RPM Fusion..."
+        sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+    fi
+    
+    # Instalacja sterowników
+    log "Instalacja sterowników do multimediów..."
+    sudo dnf install -y gstreamer1-plugins-{bad-\*,good-\*,base} gstreamer1-plugin-openh264 gstreamer1-libav --exclude=gstreamer1-plugins-bad-free-devel
+    sudo dnf install -y lame\* --exclude=lame-devel
+    
+    # Konfiguracja firewall
+    log "Konfiguracja firewall..."
+    sudo firewall-cmd --set-default-zone=home
+    sudo firewall-cmd --reload
+}
+
+# Specyficzne konfiguracje dla openSUSE
+opensuse_specific_configs() {
+    log "Wykonywanie konfiguracji specyficznych dla openSUSE..."
+    
+    # Zmiana powłoki shell (inaczej niż w innych dystrybucjach)
+    if command -v fish &> /dev/null; then
+        log "Zmiana powłoki na fish..."
+        sudo chsh -s /usr/bin/fish $USER && success "Powłoka zmieniona na fish. Wyloguj się, aby zastosować zmiany."
+    fi
+    
+    # Optymalizacja Zypper
+    log "Optymalizacja Zypper..."
+    sudo sed -i 's/# solver.onlyRequires = false/solver.onlyRequires = true/' /etc/zypp/zypp.conf
+}
+
+# Wykonywanie głównego kodu skryptu
+# ===================================================
 
 # Instalacja zależności
 install_dwm_deps
@@ -229,7 +398,6 @@ gsettings set org.gnome.desktop.interface font-name 'JetBrainsMono Nerd Font 10'
 ln -sf ~/.config/gtk-3.0/settings.ini ~/.config/gtk-4.0/settings.ini
 
 # Ustawienie konfiguracji programów root
-
 sudo mkdir -p /root/.config/
 sudo ln -sf ~/dotfiles/gtkrc-2.0/.gtkrc-2.0 /root/.gtkrc-2.0
 sudo ln -sf ~/dotfiles/vim/.vimrc /root/.vimrc
@@ -241,11 +409,25 @@ sudo ln -sf ~/dotfiles/gtk-3.0/.config/gtk-3.0 /root/.config/gtk-3.0
 sudo ln -sf ~/dotfiles/gtk-2.0/.config/gtk-2.0 /root/.config/gtk-2.0
 sudo ln -sf ~/dotfiles/ranger/.config/ranger /root/.config/ranger
 
-# Zmiana powłoki shell
-sudo chsh $USER -s /bin/fish && echo 'Now log out.'
-
-# Zmiana powłoki shell - tylko dla opensuse
-# sudo chsh -s /usr/bin/fish $USER && echo 'Now log out.'
+# Wykonanie konfiguracji specyficznych dla danej dystrybucji
+log "Wykonywanie konfiguracji specyficznych dla dystrybucji $DISTRO..."
+case "$DISTRO" in
+    arch)
+        arch_specific_configs
+        ;;
+    ubuntu)
+        ubuntu_specific_configs
+        ;;
+    debian)
+        debian_specific_configs
+        ;;
+    fedora)
+        fedora_specific_configs
+        ;;
+    opensuse)
+        opensuse_specific_configs
+        ;;
+esac
 
 # Pytanie o reboot
 read -p "Czy chcesz teraz zrestartować system? [y/N] " -n 1 -r
