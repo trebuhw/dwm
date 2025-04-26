@@ -89,7 +89,7 @@ install_dwm_deps() {
 
 # Pakiety wspólne (repozytoria oficjalne)
 COMMON_PACKAGES=(
-    azote bash-completion bat blueman btop brightnessctl cliphist cronie cups curl file-roller firefox fish foot fzf galculator gcc gcolor3 gnome-disk-utility gparted grimblast-git grub-customizer gzip htop hyprpicker i3lock iptables kitty mako mc meld neovim numlockx nwg-look os-prober pamixer parcellite pavucontrol pdfarranger picom polkit-gnome qemu-full qemu-img qt5ct ranger rclone ripgrep rofi rofi-emoji rsync sane sddm scrot simple-scan slurp starship stow sxhkd swappy swaybg swaylock-effects-git swaylock-fancy-git system-config-printer tela-circle-icon-theme-all thunar thunar-archive-plugin thunar-volman time timeshift trash-cli tree tumbler unrar unzip virt-install virt-manager virt-viewer vlc waybar wget wl-clipboard wofi xfce4-notifyd xfce4-terminal xclip xdg-user-dirs xreader yazi yt-dlp zathura zathura-pdf-mupdf zoxide
+    azote bash-completion bat blueman btop brightnessctl cliphist cronie cups curl file-roller firefox fish foot fzf galculator gcc gcolor3 gnome-disk-utility gparted grub-customizer gzip htop hyprpicker i3lock iptables kitty mako mc meld neovim numlockx nwg-look os-prober pamixer parcellite pavucontrol pdfarranger picom polkit-gnome qemu-full qemu-img qt5ct ranger rclone ripgrep rofi rofi-emoji rsync sane sddm scrot simple-scan slurp starship stow sxhkd swappy swaybg swaylock-effects-git swaylock-fancy-git system-config-printer tela-circle-icon-theme-all thunar thunar-archive-plugin thunar-volman time timeshift trash-cli tree tumbler unrar unzip virt-install virt-manager virt-viewer vlc waybar wget wl-clipboard wofi xfce4-notifyd xfce4-terminal xclip xdg-user-dirs xreader yazi yt-dlp zathura zathura-pdf-mupdf zoxide
 )
 
 # Odpowiedniki i pakiety dodatkowe
@@ -97,7 +97,7 @@ case "$DISTRO" in
     arch)
         PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl lm_sensors mousepad network-manager-applet nsxiv nwg-look mlocate os-prober polkit-gnome starship swappy tealdeer wezterm wofi yazi)
         YAY_PACKAGES=(
-        bibata-cursor-theme brother-dcp1610w brscan4 github-desktop google-chrome hyprland-qtutils-git hyprutils-git lpm moc-pulse mkinitcpio-firmware ookla-speedtest-bin simple-sddm-theme-git sublime-text-4 waypaper wlogout)
+        bibata-cursor-theme brother-dcp1610w brscan4 github-desktop google-chrome grimblast-git hyprland-qtutils-git hyprutils-git lpm moc-pulse mkinitcpio-firmware ookla-speedtest-bin simple-sddm-theme-git sublime-text-4 waypaper wlogout)
         ;;
     ubuntu)
         PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" 
