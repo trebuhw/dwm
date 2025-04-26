@@ -157,7 +157,8 @@ arch_specific_configs() {
     log "Konfiguracja usług systemowych..."
     sudo systemctl enable --now NetworkManager 
     sudo systemctl enable --now cups
-    
+    sudo systemctl enable sddm
+
     # Konfiguracja pacman
     log "Konfigurowanie pacman..."
     if ! grep -q "Color" /etc/pacman.conf; then
