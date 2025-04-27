@@ -290,12 +290,26 @@ opensuse_specific_configs() {
     
     # Optymalizacja Zypper
     log "Optymalizacja Zypper..."
-    sudo sed -i 's/# solver.onlyRequires = false/solver.onlyRequires = true/' /etc/zypp/zypp.conf
+    sudo sed -i 's/# solver.onlyRequires = false/
+    solver.onlyRequires = true/' /etc/zypp/zypp.conf
+    
+    # Zmiana koloru Yast2
+    sudo sed -i 's/Y2NCURSES_COLOR_THEME="[^"]*"/Y2NCURSES_COLOR_THEME="rxvt"/' /etc/sysconfig/yast2
+    
+    # Wyłączenie lightdm 
     sudo systemctl disable display-manager
+    
+    # Włączenie SDDM
     sudo systemctl enable sddm
+    
+    # instalacja programow z opi
     sudo opi google-chrome
     sudo opi sublime-text
     sudo opi waypaper
+    
+    # Skopiowanie konfiguracji SDDM
+    sudo cp -rv ~/.dotfiles/usr/.config/usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/
+    sudo cp -rv ~/.dotfiles/etc/.config/sddm.conf.d /etc
 }
 
 # Wykonywanie głównego kodu skryptu
