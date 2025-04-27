@@ -99,7 +99,7 @@ COMMON_PACKAGES=(
 # Odpowiedniki i pakiety dodatkowe
 case "$DISTRO" in
     arch)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate os-prober starship tldr xf86-input-synaptics xf86-video-intel wezterm yazi)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate os-prober starship tldr qt5ct xf86-input-synaptics xf86-video-intel wezterm yazi)
         YAY_PACKAGES=(google-chrome lm_sensors nwg-look ueberzug waypaper)
         ;;
     ubuntu)
@@ -112,7 +112,7 @@ case "$DISTRO" in
         PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty fastfetch lxappearance polkit network-manager-applet sxiv xorg-x11-drv-synaptics xorg-x11-drv-intel )
         ;;
     opensuse)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty eza fastfetch font-manager lxappearance opi polkit-gnome NetworkManager-applet mlocate starship sxiv sensors ueberzugpp wezterm yazi zathura-plugin-pdf-mupdf)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" eza fastfetch font-manager lxappearance opi polkit-gnome NetworkManager-applet mlocate tealdeer qt5ct starship sxiv sensors ueberzugpp wezterm yazi zathura-plugin-pdf-mupdf azote cliphist grim hyprland hyprland hyprland-qutils mako sddm slurp swaybg swaylock swappy waybar waybar wlogout wofi wofi xdg-desktop-portal-hyprland xhost wl-clipboard)
         ;;
 esac
 
@@ -291,6 +291,11 @@ opensuse_specific_configs() {
     # Optymalizacja Zypper
     log "Optymalizacja Zypper..."
     sudo sed -i 's/# solver.onlyRequires = false/solver.onlyRequires = true/' /etc/zypp/zypp.conf
+    sudo systemctl disable display-manager
+    sudo systemctl enable sddm
+    sudo opi google-chrome
+    sudo opi sublime-text
+    sudo opi waypaper
 }
 
 # Wykonywanie głównego kodu skryptu
@@ -346,7 +351,7 @@ log "Tworzenie kopii zapasowych plików konfiguracyjnych..."
 # Stow
 log "Tworzenie symlinków za pomocą stow..."
 cd ~/.dotfiles || { error "Nie można przejść do katalogu ~/.dotfiles"; exit 1; }
-stow Xresources/ alacritty/ background/ bash/ btop/ dunst/ fish/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/ icons/ kitty/ mc/ nvim/ ranger/ rofi/ suckless/ nsxiv/ parcellite/ themes/ sxiv/ vim/ xinitrc/ xprofile/ yazi/ wezterm/ zathura/
+stow Xresources/ alacritty/ background/ bash/ btop/ dunst/ fish/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/ hypr/ icons/ kitty/ mako/ mc/ nvim/ nsxiv/ parcellite/ qt5ct/ ranger/ rofi/ suckless/ sublime themes/ thunar/ tlder/ sxiv/ swappy/ swaylock/ vim/ xfce4/ xinitrc/ xprofile/ yazi/ waybar/ wezterm/ wlogout/ wofi/ zathura/
 check_success "Błąd podczas wykonywania stow"
 
 # Kompilacja i instalacja DWM
