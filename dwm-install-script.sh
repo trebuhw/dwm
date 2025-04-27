@@ -288,6 +288,9 @@ opensuse_specific_configs() {
         sudo chsh -s /usr/bin/fish $USER && success "Powłoka zmieniona na fish. Wyloguj się, aby zastosować zmiany."
     fi
     
+    # Zmiana hostname
+    sudo hostnamectl set-hostname --static "tumbleweed"
+
     # Optymalizacja Zypper
     log "Optymalizacja Zypper..."
     sudo sed -i 's/# solver.onlyRequires = false/
