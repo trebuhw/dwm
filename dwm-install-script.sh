@@ -299,10 +299,10 @@ opensuse_specific_configs() {
     sudo sed -i 's/Y2NCURSES_COLOR_THEME="[^"]*"/Y2NCURSES_COLOR_THEME="rxvt"/' /etc/sysconfig/yast2
     
     # Wyłączenie lightdm 
-    sudo systemctl disable display-manager
+    # sudo systemctl disable display-manager
     
     # Włączenie SDDM
-    sudo systemctl enable sddm
+    # sudo systemctl enable sddm
     
     # instalacja programow z opi
     sudo opi google-chrome
