@@ -92,9 +92,7 @@ install_dwm_deps() {
 }
 
 # Pakiety wspólne (repozytoria oficjalne)
-COMMON_PACKAGES=(
-    bash-completion bat blueman brightnessctl btop cups curl dunst feh file-roller firefox fish fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura zoxide
-)
+COMMON_PACKAGES=(bash-completion bat blueman brightnessctl btop cups curl dunst feh file-roller firefox fish fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura zoxide)
 
 # Odpowiedniki i pakiety dodatkowe
 case "$DISTRO" in
@@ -160,9 +158,9 @@ arch_specific_configs() {
     fi
     
     if ! grep -q "^ParallelDownloads" /etc/pacman.conf; then
-    sudo sed -i '/\[options\]/a ParallelDownloads = 50' /etc/pacman.conf && success "Dodano ParallelDownloads = 50 do pacman.conf."
+        sudo sed -i '/\[options\]/a ParallelDownloads = 50' /etc/pacman.conf && success "Dodano ParallelDownloads = 50 do pacman.conf."
     else
-    sudo sed -i 's/^#\?ParallelDownloads *= *.*/ParallelDownloads = 50/' /etc/pacman.conf && success "Ustawiono ParallelDownloads = 50 w pacman.conf."
+        sudo sed -i 's/^#*ParallelDownloads *= *.*/ParallelDownloads = 50/' /etc/pacman.conf && success "Ustawiono ParallelDownloads = 50 w pacman.conf."
     fi
 
     # Optymalizacja systemu
