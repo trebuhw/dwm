@@ -293,8 +293,7 @@ opensuse_specific_configs() {
 
     # Optymalizacja Zypper
     log "Optymalizacja Zypper..."
-    sudo sed -i 's/# solver.onlyRequires = false/
-    solver.onlyRequires = true/' /etc/zypp/zypp.conf
+    sudo sed -i 's/# solver.onlyRequires = false/solver.onlyRequires = true/' /etc/zypp/zypp.conf
     
     # Zmiana koloru Yast2
     sudo sed -i 's/Y2NCURSES_COLOR_THEME="[^"]*"/Y2NCURSES_COLOR_THEME="rxvt"/' /etc/sysconfig/yast2
