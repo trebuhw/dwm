@@ -152,6 +152,7 @@ arch_specific_configs() {
     log "Konfiguracja usług systemowych..."
     sudo systemctl enable --now NetworkManager 
     sudo systemctl enable --now cups
+    sudo systemctl enable --now sddm
     
     # Konfiguracja pacman
     #log "Konfigurowanie pacman..."
