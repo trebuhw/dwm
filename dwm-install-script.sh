@@ -177,7 +177,6 @@ arch_specific_configs() {
     fi
 
     # Skopiowanie konfiguracji SDDM
-
     [ -d /usr/share/sddm/themes/simple-sddm ] && sudo mv /usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/simple-sddm.bak
     [ -f /etc/sddm.conf.d ] && sudo mv /etc/sddm.conf.d /etc/sddm.conf.d.bak
     sudo cp -rv ~/.dotfiles/usr/.config/usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/
@@ -288,6 +287,22 @@ fedora_specific_configs() {
 # Specyficzne konfiguracje dla openSUSE
 opensuse_specific_configs() {
     log "Wykonywanie konfiguracji specyficznych dla openSUSE..."
+
+    # Włączanie i uruchamianie usług
+    log "Konfiguracja usług systemowych..."
+    sudo systemctl enable --now NetworkManager 
+    sudo systemctl enable --now cups
+    # sudo systemctl enable sddm
+    sudo systemctl enable tlp
+
+    # Wyłączenie lightdm 
+    # sudo systemctl disable display-manager
+
+    # Skopiowanie konfiguracji lightdm-display-manager
+    [ -d /etc/lightdm ] && sudo mv /etc/lightdm /etc/lightdm.bak
+    sudo cp -rv ~/.dotfiles/etc/.config/lightdm /etc
+
+
     
     # Zmiana powłoki shell (inaczej niż w innych dystrybucjach)
     if command -v fish &> /dev/null; then
@@ -306,14 +321,11 @@ opensuse_specific_configs() {
     sudo sed -i 's/Y2NCURSES_COLOR_THEME="[^"]*"/Y2NCURSES_COLOR_THEME="rxvt"/' /etc/sysconfig/yast2
 
     # Skopiowanie konfiguracji SDDM
+    [ -d /usr/share/sddm/themes/simple-sddm ] && sudo mv /usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/simple-sddm.bak
     sudo cp -rv ~/.dotfiles/usr/.config/usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/
+
+    [ -f /etc/sddm.conf.d ] && sudo mv /etc/sddm.conf.d /etc/sddm.conf.d.bak
     sudo cp -rv ~/.dotfiles/etc/.config/sddm.conf.d /etc
-    
-    # Wyłączenie lightdm 
-    # sudo systemctl disable display-manager
-    
-    # Włączenie SDDM
-    # sudo systemctl enable sddm
     
     # instalacja programow z opi
     sudo opi google-chrome
@@ -437,9 +449,9 @@ sudo ln -sf ~/dotfiles/gtk-3.0/.config/gtk-3.0 /root/.config/gtk-3.0
 sudo ln -sf ~/dotfiles/gtk-2.0/.config/gtk-2.0 /root/.config/gtk-2.0
 sudo ln -sf ~/dotfiles/ranger/.config/ranger /root/.config/ranger
 
-# Skopiowanie konfiguracji SDDM
-sudo cp -rv ~/.dotfiles/usr/.config/usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/
-sudo cp -rv ~/.dotfiles/etc/.config/sddm.conf.d /etc
+# TLP
+[ -f /etc/tlp.conf ] && sudo mv /etc/tlp.conf /etc/tlp.conf.back
+sudo ln -sf ~/.dotfiles/etc/.config/tlp.conf
 
 # Wykonanie konfiguracji specyficznych dla danej dystrybucji
 log "Wykonywanie konfiguracji specyficznych dla dystrybucji $DISTRO..."
