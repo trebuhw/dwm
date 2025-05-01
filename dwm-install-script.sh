@@ -99,7 +99,7 @@ COMMON_PACKAGES=(
 # Odpowiedniki i pakiety dodatkowe
 case "$DISTRO" in
     arch)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate os-prober starship tldr qt5ct xf86-input-synaptics xf86-video-intel wezterm yazi)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate os-prober sddm starship tldr qt5ct xf86-input-synaptics xf86-video-intel wezterm yazi)
         YAY_PACKAGES=(google-chrome lm_sensors nwg-look ueberzug waypaper)
         ;;
     ubuntu)
