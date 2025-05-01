@@ -93,13 +93,13 @@ install_dwm_deps() {
 
 # Pakiety wspólne (repozytoria oficjalne)
 COMMON_PACKAGES=(
-    bash-completion bat blueman brightnessctl btop cups curl dunst feh file-roller firefox fish fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura zoxide
+    bash-completion bat blueman brightnessctl btop cups curl dunst feh file-roller firefox fish fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld neovim numlockx p7zip parcellite pavucontrol pdfarranger picom ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura zoxide
     )
 
 # Odpowiedniki i pakiety dodatkowe
 case "$DISTRO" in
     arch)
-        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate os-prober sddm starship tldr qt5ct xf86-input-synaptics xf86-video-intel wezterm yazi)
+        PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate os-prober sddm starship tldr tlp qt5ct xf86-input-synaptics xf86-video-intel wezterm yazi)
         YAY_PACKAGES=(google-chrome lm_sensors nwg-look simple-sddm-theme-git ueberzug waypaper)
         ;;
     ubuntu)
@@ -152,6 +152,8 @@ arch_specific_configs() {
     log "Konfiguracja usług systemowych..."
     sudo systemctl enable --now NetworkManager 
     sudo systemctl enable --now cups
+    sudo systemctl enable sddm
+    sudo systemctl enable tlp
     
     # Konfiguracja pacman
     #log "Konfigurowanie pacman..."
