@@ -152,7 +152,6 @@ arch_specific_configs() {
     log "Konfiguracja usług systemowych..."
     sudo systemctl enable --now NetworkManager 
     sudo systemctl enable --now cups
-    sudo systemctl enable --now sddm
     
     # Konfiguracja pacman
     #log "Konfigurowanie pacman..."
@@ -176,6 +175,10 @@ arch_specific_configs() {
         echo "vm.vfs_cache_pressure=50" | sudo tee -a /etc/sysctl.d/99-ssd.conf > /dev/null
         sudo systemctl enable fstrim.timer
     fi
+
+    # Skopiowanie konfiguracji SDDM
+    sudo cp -rv ~/.dotfiles/usr/.config/usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/
+    sudo cp -rv ~/.dotfiles/etc/.config/sddm.conf.d /etc
 }
 
 # Specyficzne konfiguracje dla Ubuntu
@@ -298,6 +301,10 @@ opensuse_specific_configs() {
     
     # Zmiana koloru Yast2
     sudo sed -i 's/Y2NCURSES_COLOR_THEME="[^"]*"/Y2NCURSES_COLOR_THEME="rxvt"/' /etc/sysconfig/yast2
+
+    # Skopiowanie konfiguracji SDDM
+    sudo cp -rv ~/.dotfiles/usr/.config/usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/
+    sudo cp -rv ~/.dotfiles/etc/.config/sddm.conf.d /etc
     
     # Wyłączenie lightdm 
     # sudo systemctl disable display-manager
