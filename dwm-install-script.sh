@@ -92,7 +92,9 @@ install_dwm_deps() {
 }
 
 # Pakiety wspólne (repozytoria oficjalne)
-COMMON_PACKAGES=(bash-completion bat blueman brightnessctl btop cups curl dunst feh file-roller firefox fish fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura zoxide)
+COMMON_PACKAGES=(
+    bash-completion bat blueman brightnessctl btop cups curl dunst feh file-roller firefox fish fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld neovim numlockx p7zip parcellite pavucontrol pdfarranger picom rclone ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura zoxide
+    )
 
 # Odpowiedniki i pakiety dodatkowe
 case "$DISTRO" in
@@ -306,10 +308,6 @@ opensuse_specific_configs() {
     sudo opi google-chrome
     sudo opi sublime-text
     sudo opi waypaper
-    
-    # Skopiowanie konfiguracji SDDM
-    sudo cp -rv ~/.dotfiles/usr/.config/usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/
-    sudo cp -rv ~/.dotfiles/etc/.config/sddm.conf.d /etc
 }
 
 # Wykonywanie głównego kodu skryptu
@@ -427,6 +425,10 @@ sudo ln -sf ~/dotfiles/gtk-4.0/.config/gtk-4.0 /root/.config/gtk-4.0
 sudo ln -sf ~/dotfiles/gtk-3.0/.config/gtk-3.0 /root/.config/gtk-3.0
 sudo ln -sf ~/dotfiles/gtk-2.0/.config/gtk-2.0 /root/.config/gtk-2.0
 sudo ln -sf ~/dotfiles/ranger/.config/ranger /root/.config/ranger
+
+# Skopiowanie konfiguracji SDDM
+sudo cp -rv ~/.dotfiles/usr/.config/usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/
+sudo cp -rv ~/.dotfiles/etc/.config/sddm.conf.d /etc
 
 # Wykonanie konfiguracji specyficznych dla danej dystrybucji
 log "Wykonywanie konfiguracji specyficznych dla dystrybucji $DISTRO..."
