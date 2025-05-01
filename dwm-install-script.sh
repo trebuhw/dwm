@@ -100,7 +100,7 @@ COMMON_PACKAGES=(
 case "$DISTRO" in
     arch)
         PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate os-prober sddm starship tldr qt5ct xf86-input-synaptics xf86-video-intel wezterm yazi)
-        YAY_PACKAGES=(google-chrome lm_sensors nwg-look ueberzug waypaper)
+        YAY_PACKAGES=(google-chrome lm_sensors nwg-look simple-sddm-theme-git ueberzug waypaper)
         ;;
     ubuntu)
         PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty eza fastfetch font-manager nwg-look policykit-1-gnome network-manager-gnome mlocate starship sxiv xserver-xorg-input-synaptics xserver-xorg-video-intel wezterm yazi)
@@ -177,6 +177,9 @@ arch_specific_configs() {
     fi
 
     # Skopiowanie konfiguracji SDDM
+
+    [ -d /usr/share/sddm/themes/simple-sddm ] && sudo mv /usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/simple-sddm.bak
+    [ -f /etc/sddm.conf.d ] && sudo mv /etc/sddm.conf.d /etc/sddm.conf.d.bak
     sudo cp -rv ~/.dotfiles/usr/.config/usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/
     sudo cp -rv ~/.dotfiles/etc/.config/sddm.conf.d /etc
 }
