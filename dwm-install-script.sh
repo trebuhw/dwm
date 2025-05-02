@@ -424,6 +424,10 @@ log "Kopiowanie pliku .desktop..."
 sudo cp ~/.config/suckless/usr/share/xsessions/dwm.desktop /usr/share/xsessions/
 check_success "Nie udało się skopiować pliku .desktop"
 
+# Instalacja pliku start-dwm.sh uruchamiającego slstatus w autostarcie w GDM i SDDM
+[ -d /usr/local/bin ] || sudo mkdir -p /usr/local/bin
+sudo cp ~/.config/suckless/usr/local/bin/start-dwm.sh /usr/local/bin/
+
 log "Instalacja zakończona pomyślnie!"
 log "Aby uruchomić DWM, wyloguj się i wybierz sesję DWM z menedżera logowania."
 
