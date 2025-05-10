@@ -60,12 +60,12 @@ install_dwm_deps() {
 
 # Pakiety wspólne (repozytoria oficjalne)
 COMMON_PACKAGES=(
-    bash-completion bat blueman brightnessctl btop curl dunst feh file-roller firefox fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock meld neovim numlockx p7zip parcellite pavucontrol pdfarranger picom ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura zoxide
+    bash-completion bat blueman brightnessctl btop curl dunst feh file-roller firefox fzf galculator gcc gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock meld neovim numlockx p7zip pavucontrol pdfarranger picom ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura
 )
 
 # Pakiety specyficzne dla Artix
-PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate sddm tldr tlp qt5ct xf86-video-intel wezterm yazi)
-YAY_PACKAGES=(google-chrome lm_sensors nwg-look sublime-text-4 ueberzug)
+PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate sddm tldr tlp qt5ct xf86-video-intel wezterm yazi)
+YAY_PACKAGES=(eza google-chrome lm_sensors nwg-look parcellite sublime-text-4 trash-cli ueberzug zoxide)
 
 # Instalacja pakietów z repozytoriów
 install_repo_packages() {
