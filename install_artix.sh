@@ -65,7 +65,7 @@ COMMON_PACKAGES=(
 
 # Pakiety specyficzne dla Artix
 PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate sddm tldr tlp qt5ct wezterm yazi)
-YAY_PACKAGES=(eza google-chrome lm_sensors nwg-look parcellite sublime-text-4 trash-cli ueberzug zoxide)
+YAY_PACKAGES=(eza google-chrome lm_sensors nwg-look sublime-text-4 trash-cli zoxide)
 
 # Instalacja pakietów z repozytoriów
 install_repo_packages() {
