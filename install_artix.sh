@@ -34,6 +34,10 @@ else
     exit 1
 fi
 
+sudo pacman -Syu archlinux-mirrorlist
+sudo pacman -S reflector
+sudo reflector --country 'Poland,Germany' --latest 10 --sort rate --save /etc/pacman.d/mirrorlist-arch
+
 # Dodawanie repozytoriów Arch Linux
 add_arch_repos() {
     log "Dodawanie repozytoriów Arch Linux do pacman.conf..."
