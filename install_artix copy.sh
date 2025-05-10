@@ -77,12 +77,35 @@ install_repo_packages() {
 artix_specific_configs() {
     log "Wykonywanie konfiguracji specyficznych dla Artix Linux..."
 
+    # Zmiana powłoki shell
+    if command -v fish &> /dev/null; then
+        log "Zmiana powłoki na fish..."
+        sudo chsh $USER -s /bin/fish && success "Powłoka zmieniona na fish. Wyloguj się, aby zastosować zmiany."
+    fi
+
     # Włączanie i uruchamianie usług z runit
     log "Konfiguracja usług systemowych z runit..."
     sudo ln -s /etc/runit/sv/NetworkManager /run/runit/service/
     sudo ln -s /etc/runit/sv/cupsd /run/runit/service/
     sudo ln -s /etc/runit/sv/sddm /run/runit/service/
     sudo ln -s /etc/runit/sv/tlp /run/runit/service/
+
+    # Optymalizacja systemu
+    log "Optymalizacja systemu Artix..."
+    echo "vm.swappiness=10" | sudo tee /etc/sysctl.d/99-swappiness.conf > /dev/null
+
+    # Optymalizacja SSD (jeśli jest)
+    if [ -d "/sys/block/sda/queue/rotational" ] && [ "$(cat /sys/block/sda/queue/rotational)" -eq 0 ]; then
+        log "Wykryto SSD, optymalizacja..."
+        echo "vm.vfs_cache_pressure=50" | sudo tee -a /etc/sysctl.d/99-ssd.conf > /dev/null
+        sudo ln -s /etc/runit/sv/fstrim /run/runit/service/
+    fi
+
+    # Skopiowanie konfiguracji SDDM
+    [ -d /usr/share/sddm/themes/simple-sddm ] && sudo mv /usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/simple-sddm.bak
+    [ -f /etc/sddm.conf.d ] && sudo mv /etc/sddm.conf.d /etc/sddm.conf.d.bak
+    sudo cp -rv ~/.dotfiles/usr/.config/usr/share/sddm/themes/simple-sddm /usr/share/sddm/themes/
+    sudo cp -rv ~/.dotfiles/etc/.config/sddm.conf.d /etc
 }
 
 # Wykonywanie głównego kodu skryptu
@@ -193,6 +216,10 @@ sudo ln -sf ~/.dotfiles/gtk-4.0/.config/gtk-4.0 /root/.config/gtk-4.0
 sudo ln -sf ~/.dotfiles/gtk-3.0/.config/gtk-3.0 /root/.config/gtk-3.0
 sudo ln -sf ~/.dotfiles/gtk-2.0/.config/gtk-2.0 /root/.config/gtk-2.0
 sudo ln -sf ~/.dotfiles/ranger/.config/ranger /root/.config/ranger
+
+# TLP
+[ -f /etc/tlp.conf ] && sudo mv /etc/tlp.conf /etc/tlp.conf.back
+sudo ln -sf ~/.dotfiles/etc/.config/tlp.conf
 
 # Wykonanie konfiguracji specyficznych dla Artix
 log "Wykonywanie konfiguracji specyficznych dla Artix..."
