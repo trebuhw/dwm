@@ -64,8 +64,8 @@ COMMON_PACKAGES=(
 )
 
 # Pakiety specyficzne dla Artix
-PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate sddm starship tldr tlp qt5ct xf86-input-synaptics xf86-video-intel wezterm yazi)
-YAY_PACKAGES=(google-chrome lm_sensors nwg-look mkinitcpio-firmware moc-pulse simple-sddm-theme-git sublime-text-4 ueberzug waypaper)
+PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate sddm starship tldr tlp qt5ct xf86-video-intel wezterm yazi)
+YAY_PACKAGES=(google-chrome lm_sensors nwg-look mkinitcpio-firmware moc-pulse simple-sddm-theme-git sublime-text-4 ueberzug)
 
 # Instalacja pakietów z repozytoriów
 install_repo_packages() {
