@@ -60,7 +60,7 @@ install_dwm_deps() {
 
 # Pakiety wspólne (repozytoria oficjalne)
 COMMON_PACKAGES=(
-    bash-completion blueman brightnessctl btop curl dunst feh file-roller firefox fzf galculator gcc gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock meld neovim numlockx p7zip pavucontrol pdfarranger picom ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura
+    bash-completion blueman brightnessctl btop curl dunst feh file-roller firefox fzf galculator gcc gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock meld neovim numlockx p7zip pavucontrol picom ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura
 )
 
 # Pakiety specyficzne dla Artix
