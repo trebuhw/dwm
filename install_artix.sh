@@ -65,7 +65,7 @@ COMMON_PACKAGES=(
 
 # Pakiety specyficzne dla Artix
 PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate sddm tldr tlp qt5ct wezterm yazi)
-YAY_PACKAGES=(eza google-chrome lm_sensors nwg-look sublime-text-4 trash-cli zoxide)
+YAY_PACKAGES=(eza google-chrome lm_sensors nwg-look starship/ sublime-text-4 trash-cli zoxide)
 
 # Instalacja pakietów z repozytoriów
 install_repo_packages() {
@@ -124,7 +124,7 @@ log "Tworzenie kopii zapasowych plików konfiguracyjnych..."
 # Stow
 log "Tworzenie symlinków za pomocą stow..."
 cd ~/.dotfiles || { error "Nie można przejść do katalogu ~/.dotfiles"; exit 1; }
-stow Xresources/ alacritty/ background/ bin/ btop/ dunst/ fish/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/ icons/ nvim/ nsxiv/ qt5ct/ rofi/ suckless/ sublime-text/ themes/ thunar/ tldr/ sxiv/ swappy/ vim/ xfce4/ xinitrc/ xprofile/ yazi/ waybar/ wezterm/ zathura/
+stow Xresources/ alacritty/ background/ bin/ btop/ dunst/ fish/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/ icons/ nvim/ nsxiv/ qt5ct/ rofi/ suckless/ sublime-text/ themes/ thunar/ tldr/ sxiv/ starship/ swappy/ vim/ xfce4/ xinitrc/ xprofile/ yazi/ waybar/ wezterm/ zathura/
 check_success "Błąd podczas wykonywania stow"
 
 # Kompilacja i instalacja DWM
