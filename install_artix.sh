@@ -60,7 +60,7 @@ install_dwm_deps() {
 
 # Pakiety wspólne (repozytoria oficjalne)
 COMMON_PACKAGES=(
-    bash-completion bat blueman brightnessctl btop cups curl dunst feh file-roller firefox fish fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld neovim numlockx p7zip parcellite pavucontrol pdfarranger picom ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura zoxide
+    bash-completion bat blueman brightnessctl btop curl dunst feh file-roller firefox fish fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld neovim numlockx p7zip parcellite pavucontrol pdfarranger picom ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura zoxide
 )
 
 # Pakiety specyficzne dla Artix
@@ -79,10 +79,10 @@ artix_specific_configs() {
 
     # Włączanie i uruchamianie usług z runit
     log "Konfiguracja usług systemowych z runit..."
-    sudo ln -s /etc/runit/sv/NetworkManager /run/runit/service/
-    sudo ln -s /etc/runit/sv/cupsd /run/runit/service/
-    sudo ln -s /etc/runit/sv/sddm /run/runit/service/
-    sudo ln -s /etc/runit/sv/tlp /run/runit/service/
+    # sudo ln -s /etc/runit/sv/NetworkManager /run/runit/service/
+    # sudo ln -s /etc/runit/sv/cupsd /run/runit/service/
+    # sudo ln -s /etc/runit/sv/sddm /run/runit/service/
+    #sudo ln -s /etc/runit/sv/tlp /run/runit/service/
 }
 
 # Wykonywanie głównego kodu skryptu
@@ -179,20 +179,9 @@ gsettings set org.gnome.desktop.interface cursor-size 20
 gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Dark"
 gsettings set org.gnome.desktop.wm.preferences theme "Catppuccin-Dark"
 gsettings set org.gnome.desktop.interface icon-theme "Tela-circle-dracula-dark"
-gsettings set org.gnome.desktop.interface font-name 'JetBrainsMono Nerd Font 10'
+gsettings set org.gnome.desktop.interface font-name 'JetBrainsMono Nerd Font'
+gsettings set org.gnome.desktop.interface font-size 10 
 ln -sf ~/.config/gtk-3.0/settings.ini ~/.config/gtk-4.0/settings.ini
-
-# Ustawienie konfiguracji programów root
-sudo mkdir -p /root/.config/
-sudo ln -sf ~/.dotfiles/gtkrc-2.0/.gtkrc-2.0 /root/.gtkrc-2.0
-sudo ln -sf ~/.dotfiles/vim/.vimrc /root/.vimrc
-sudo ln -sf ~/.dotfiles/vim/.viminfo /root/.viminfo
-sudo ln -sf ~/.dotfiles/nvim/.config/nvim /root/.config/nvim
-sudo ln -sf ~/.dotfiles/mc/.config/mc /root/.config/mc
-sudo ln -sf ~/.dotfiles/gtk-4.0/.config/gtk-4.0 /root/.config/gtk-4.0
-sudo ln -sf ~/.dotfiles/gtk-3.0/.config/gtk-3.0 /root/.config/gtk-3.0
-sudo ln -sf ~/.dotfiles/gtk-2.0/.config/gtk-2.0 /root/.config/gtk-2.0
-sudo ln -sf ~/.dotfiles/ranger/.config/ranger /root/.config/ranger
 
 # Wykonanie konfiguracji specyficznych dla Artix
 log "Wykonywanie konfiguracji specyficznych dla Artix..."
