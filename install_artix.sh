@@ -60,12 +60,12 @@ install_dwm_deps() {
 
 # Pakiety wspólne (repozytoria oficjalne)
 COMMON_PACKAGES=(
-    bash-completion bat blueman brightnessctl btop curl dunst feh file-roller firefox fish fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock kitty mako meld neovim numlockx p7zip parcellite pavucontrol pdfarranger picom ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura zoxide
+    bash-completion bat blueman brightnessctl btop curl dunst feh file-roller firefox fzf galculator gcc gcolor3 gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock meld neovim numlockx p7zip parcellite pavucontrol pdfarranger picom ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time trash-cli tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura zoxide
 )
 
 # Pakiety specyficzne dla Artix
-PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate sddm starship tldr tlp qt5ct xf86-video-intel wezterm yazi)
-YAY_PACKAGES=(google-chrome lm_sensors nwg-look mkinitcpio-firmware moc-pulse simple-sddm-theme-git sublime-text-4 ueberzug)
+PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty code eza fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate sddm tldr tlp qt5ct xf86-video-intel wezterm yazi)
+YAY_PACKAGES=(google-chrome lm_sensors nwg-look sublime-text-4 ueberzug)
 
 # Instalacja pakietów z repozytoriów
 install_repo_packages() {
@@ -116,9 +116,6 @@ check_success "Nie udało się sklonować repozytorium"
 
 # Tworzenie kopii zapasowych
 log "Tworzenie kopii zapasowych plików konfiguracyjnych..."
-[ -f ~/.bashrc ] && mv ~/.bashrc ~/.bashrc.bak
-[ -f ~/.bash_logout ] && mv ~/.bash_logout ~/.bash_logout.bak
-[ -f ~/.bash_profile ] && mv ~/.bash_profile ~/.bash_profile.bak
 [ -f ~/.gtkrc-2.0 ] && mv ~/.gtkrc-2.0 ~/.gtkrc-2.0.bak
 [ -d ~/.config/gtk-2.0 ] && mv ~/.config/gtk-2.0 ~/gtk-2.0.bak
 [ -d ~/.config/gtk-3.0 ] && mv ~/.config/gtk-3.0 ~/gtk-3.0.bak
@@ -127,7 +124,7 @@ log "Tworzenie kopii zapasowych plików konfiguracyjnych..."
 # Stow
 log "Tworzenie symlinków za pomocą stow..."
 cd ~/.dotfiles || { error "Nie można przejść do katalogu ~/.dotfiles"; exit 1; }
-stow Xresources/ alacritty/ background/ bat/ bash/ bin/ btop/ dunst/ fish/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/ hypr/ icons/ kitty/ mako/ mc/ nvim/ nsxiv/ parcellite/ qt5ct/ ranger/ rofi/ starship/ suckless/ sublime-text/ themes/ thunar/ tldr/ sxiv/ swappy/ swaylock/ vim/ xfce4/ xinitrc/ xprofile/ yazi/ waybar/ wezterm/ wlogout/ wofi/ zathura/
+stow Xresources/ alacritty/ background/ bat/ bin/ btop/ dunst/ fish/ fonts/ gtk-2.0/ gtk-3.0/ gtk-4.0/ gtkrc-2.0/ icons/ nvim/ nsxiv/ parcellite/ qt5ct/ rofi/ suckless/ sublime-text/ themes/ thunar/ tldr/ sxiv/ swappy/ vim/ xfce4/ xinitrc/ xprofile/ yazi/ waybar/ wezterm/ zathura/
 check_success "Błąd podczas wykonywania stow"
 
 # Kompilacja i instalacja DWM
