@@ -34,6 +34,36 @@ else
     exit 1
 fi
 
+# Dodawanie repozytoriów Arch Linux
+add_arch_repos() {
+    log "Dodawanie repozytoriów Arch Linux do pacman.conf..."
+    if ! grep -q "\[archlinux\]" /etc/pacman.conf; then
+        cat << EOF | sudo tee -a /etc/pacman.conf
+
+[archlinux]
+Include = /etc/pacman.d/mirrorlist-arch
+
+[extra]
+Include = /etc/pacman.d/mirrorlist-arch
+
+[community]
+Include = /etc/pacman.d/mirrorlist-arch
+
+[multilib]
+Include = /etc/pacman.d/mirrorlist-arch
+EOF
+        # Dodanie mirrorlist-arch, jeśli nie istnieje
+        if [ ! -f /etc/pacman.d/mirrorlist-arch ]; then
+            sudo pacman -S --noconfirm archlinux-mirrorlist
+            sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-arch
+            sudo pacman -Syy
+        fi
+        success "Repozytoria Arch Linux dodane pomyślnie."
+    else
+        log "Repozytoria Arch Linux już istnieją w pacman.conf."
+    fi
+}
+
 # Instalacja yay
 install_yay() {
     if ! command -v yay &> /dev/null; then
