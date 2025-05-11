@@ -100,7 +100,7 @@ artix_specific_configs() {
     # background
     sudo ln -sfv $HOME/.dotfiles/suckless/.config/suckless/bg/world.png /etc/lightdm
     # fonts
-    sudo ln -sfv $HOME/.dotfiles/fonts/JetBrainsMono /usr/share/fonts
+    sudo ln -sfv $HOME/.dotfiles/fonts/.fonts/JetBrainsMono /usr/share/fonts
     # config file
     sudo ln -sfv $HOME/.dotfiles/etc/.config/lightdm/light-gtk-greeter.conf/ /etc/.config/lightdm
 }
