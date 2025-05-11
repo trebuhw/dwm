@@ -58,14 +58,13 @@ install_dwm_deps() {
     check_success "Nie udało się zainstalować zależności DWM"
 }
 
-# Pakiety wspólne (repozytoria oficjalne)
-COMMON_PACKAGES=(
-    bash-completion blueman brightnessctl btop curl dunst feh file-roller firefox fzf galculator gcc gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock meld neovim numlockx p7zip pavucontrol picom ripgrep rofi rsync scrot stow sxhkd thunar thunar-archive-plugin thunar-volman time tree tumbler unrar unzip vim vlc wget xclip xdg-user-dirs xfce4-notifyd zathura
-)
-
-# Pakiety specyficzne dla Artix
-PACMAN_PACKAGES=("${COMMON_PACKAGES[@]}" alacritty fastfetch font-manager libreoffice-fresh libreoffice-fresh-pl polkit-gnome network-manager-applet nsxiv mlocate sddm tldr tlp qt5ct wezterm yazi)
-YAY_PACKAGES=(eza google-chrome lm_sensors nwg-look starship/ sublime-text-4 trash-cli zoxide)
+# Pakiety dla Artix
+PACMAN_PACKAGES=(
+    alacritty bash-completion blueman brightnessctl btop curl dunst fastfetch feh file-roller firefox font-manager fzf galculator gcc gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock libreoffice-fresh libreoffice-fresh-pl meld neovim network-manager network-manager-applet nsxiv numlockx p7zip pavucontrol picom plocate polkit-gnome ripgrep rofi rsync scrot sddm stow sxhkd thunar thunar-archive-plugin thunar-volman time tldr tlp qt5ct tree tumbler unrar unzip vim vlc wezterm wget xclip xdg-user-dirs xfce4-notifyd yazi zathura 
+    )
+YAY_PACKAGES=(
+    eza google-chrome lm_sensors nwg-look sublime-text-4 trash-cli zoxide
+    )
 
 # Instalacja pakietów z repozytoriów
 install_repo_packages() {
@@ -83,6 +82,15 @@ artix_specific_configs() {
     # sudo ln -s /etc/runit/sv/cupsd /run/runit/service/
     # sudo ln -s /etc/runit/sv/sddm /run/runit/service/
     #sudo ln -s /etc/runit/sv/tlp /run/runit/service/
+
+    # Zmiana powłoki shell
+    if command -v fish &> /dev/null; then
+        log "Zmiana powłoki na fish..."
+        sudo chsh $USER -s /bin/fish && success "Powłoka zmieniona na fish. Wyloguj się, aby zastosować zmiany."
+    fi
+    
+    # Instalacja starship
+    curl -sS https://starship.rs/install.sh | sh
 }
 
 # Wykonywanie głównego kodu skryptu
