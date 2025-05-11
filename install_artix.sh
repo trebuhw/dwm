@@ -63,7 +63,7 @@ PACMAN_PACKAGES=(
     alacritty artix-archlinux-support bash-completion blueman brightnessctl btop curl dunst fastfetch feh file-roller firefox font-manager fzf galculator gcc gnome-disk-utility gparted gsettings-desktop-schemas gzip htop i3lock libreoffice-fresh libreoffice-fresh-pl meld neovim networkmanager networkmanager-runit network-manager-applet nsxiv numlockx p7zip pavucontrol picom plocate polkit-gnome ripgrep rofi rsync scrot sddm stow sxhkd thunar thunar-archive-plugin thunar-volman time tldr tlp qt5ct tree tumbler unrar unzip vim vlc wezterm wget xclip xdg-user-dirs xfce4-notifyd yazi zathura 
     )
 YAY_PACKAGES=(
-    eza google-chrome lm_sensors nwg-look sublime-text-4 trash-cli zoxide
+    eza google-chrome lm_sensors sublime-text-4 trash-cli zoxide
     )
 
 # Instalacja pakietów z repozytoriów
