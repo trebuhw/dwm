@@ -98,7 +98,7 @@ artix_specific_configs() {
     # icons
     sudo ln -sfv $HOME/.dotfiles/icons/.icons/Tela-circle-dracula-dark /usr/share/icons
     # background
-    sudo ln -sfv/home/hubert/.dotfiles/suckless/.config/suckless/bg/world.png /etc/lightdm
+    sudo ln -sfv $HOME/.dotfiles/suckless/.config/suckless/bg/world.png /etc/lightdm
     # fonts
     sudo ln -sfv $HOME/.dotfiles/fonts/JetBrainsMono /usr/share/fonts
     # config file
