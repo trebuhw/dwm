@@ -102,7 +102,7 @@ artix_specific_configs() {
     # fonts
     sudo ln -sfv $HOME/.dotfiles/fonts/.fonts/JetBrainsMono /usr/share/fonts
     # config file
-    sudo ln -sfv $HOME/.dotfiles/etc/.config/lightdm/lightdm-gtk-greeter.conf/ /etc/lightdm
+    sudo ln -sfv $HOME/.dotfiles/etc/.config/lightdm/lightdm-gtk-greeter.conf /etc/lightdm
 }
 
 # Wykonywanie głównego kodu skryptu
