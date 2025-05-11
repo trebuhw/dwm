@@ -94,15 +94,15 @@ artix_specific_configs() {
 
     ## Pliki do konfiguracji lightdm po instalacji uruchomić (# sudo lightdm-gtk-greeter-settings)
     #  theme
-    sudo ln -sfv $HOME/.dotfiles/themes/.themes/Catppuccin-Dark /usr/share/themes
+    sudo cp -rv $HOME/.dotfiles/themes/.themes/Catppuccin-Dark /usr/share/themes
     # icons
-    sudo ln -sfv $HOME/.dotfiles/icons/.icons/Tela-circle-dracula-dark /usr/share/icons
+    sudo cp -rv $HOME/.dotfiles/icons/.icons/Tela-circle-dracula-dark /usr/share/icons
     # background
-    sudo ln -sfv $HOME/.dotfiles/suckless/.config/suckless/bg/world.png /etc/lightdm
+    sudo cp -v $HOME/.dotfiles/suckless/.config/suckless/bg/world.png /etc/lightdm
     # fonts
-    sudo ln -sfv $HOME/.dotfiles/fonts/.fonts/JetBrainsMono /usr/share/fonts
+    sudo cp -rv $HOME/.dotfiles/fonts/.fonts/JetBrainsMono /usr/share/fonts
     # config file
-    sudo ln -sfv $HOME/.dotfiles/etc/.config/lightdm/lightdm-gtk-greeter.conf /etc/lightdm
+    sudo cp -v $HOME/.dotfiles/etc/.config/lightdm/lightdm-gtk-greeter.conf /etc/lightdm
 }
 
 # Wykonywanie głównego kodu skryptu
