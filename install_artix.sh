@@ -26,7 +26,7 @@ check_success() {
 }
 
 # Wykrywanie dystrybucji
-if [ -f /etc/lsb-release ]; then
+if [ -f /etc/os-release ]; then
     DISTRO="Artix"
     log "Wykryto dystrybucję: Artix Linux"
 else
