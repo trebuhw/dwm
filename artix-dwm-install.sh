@@ -94,7 +94,7 @@ artix_specific_configs() {
 
     ## Pliki do konfiguracji lightdm po instalacji uruchomić (# sudo lightdm-gtk-greeter-settings)
     #  theme
-    sudo ln -sfv $HOME/.dotfiles/themes/.themes/Catppucin-Dark /usr/share/themes
+    sudo ln -sfv $HOME/.dotfiles/themes/.themes/Catppuccin-Dark /usr/share/themes
     # icons
     sudo ln -sfv $HOME/.dotfiles/icons/.icons/Tela-circle-dracula-dark /usr/share/icons
     # background
