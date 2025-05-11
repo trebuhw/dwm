@@ -84,10 +84,10 @@ artix_specific_configs() {
     #sudo ln -s /etc/runit/sv/tlp /run/runit/service/
 
     # Zmiana powłoki shell
-    if command -v fish &> /dev/null; then
-        log "Zmiana powłoki na fish..."
-        sudo chsh $USER -s /bin/fish && success "Powłoka zmieniona na fish. Wyloguj się, aby zastosować zmiany."
-    fi
+    # if command -v fish &> /dev/null; then
+    #     log "Zmiana powłoki na fish..."
+    #     sudo chsh $USER -s /bin/fish && success "Powłoka zmieniona na fish. Wyloguj się, aby zastosować zmiany."
+    # fi
     
     # Instalacja starship
     # curl -sS https://starship.rs/install.sh | sh
