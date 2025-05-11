@@ -78,19 +78,19 @@ artix_specific_configs() {
 
     # Włączanie i uruchamianie usług z runit
     log "Konfiguracja usług systemowych z runit..."
-    # sudo ln -s /etc/runit/sv/NetworkManager /run/runit/service/
+    sudo ln -s /etc/runit/sv/NetworkManager /run/runit/service/
     # sudo ln -s /etc/runit/sv/cupsd /run/runit/service/
     # sudo ln -s /etc/runit/sv/sddm /run/runit/service/
     #sudo ln -s /etc/runit/sv/tlp /run/runit/service/
 
     # Zmiana powłoki shell
-    # if command -v fish &> /dev/null; then
-    #     log "Zmiana powłoki na fish..."
-    #     sudo chsh $USER -s /bin/fish && success "Powłoka zmieniona na fish. Wyloguj się, aby zastosować zmiany."
-    # fi
+    if command -v fish &> /dev/null; then
+        log "Zmiana powłoki na fish..."
+        sudo chsh $USER -s /usr/bin/fish && success "Powłoka zmieniona na fish. Wyloguj się, aby zastosować zmiany."
+    fi
     
     # Instalacja starship
-    # curl -sS https://starship.rs/install.sh | sh
+    curl -sS https://starship.rs/install.sh | sh
 }
 
 # Wykonywanie głównego kodu skryptu
