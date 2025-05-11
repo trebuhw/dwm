@@ -91,6 +91,18 @@ artix_specific_configs() {
     
     # Instalacja starship
     curl -sS https://starship.rs/install.sh | sh
+
+    ## Pliki do konfiguracji lightdm po instalacji uruchomić (# sudo lightdm-gtk-greeter-settings)
+    #  theme
+    sudo ln -sfv $HOME/.dotfiles/themes/.themes/Catppucin-Dark /usr/share/themes
+    # icons
+    sudo ln -sfv $HOME/.dotfiles/icons/.icons/Tela-circle-dracula-dark /usr/share/icons
+    # background
+    sudo ln -sfv/home/hubert/.dotfiles/suckless/.config/suckless/bg/world.png /etc/lightdm
+    # fonts
+    sudo ln -sfv $HOME/.dotfiles/fonts/JetBrainsMono /usr/share/fonts
+    # config file
+    sudo ln -sfv $HOME/.dotfiles/etc/.config/lightdm/light-gtk-greeter.conf/ /etc/.config/lightdm
 }
 
 # Wykonywanie głównego kodu skryptu
